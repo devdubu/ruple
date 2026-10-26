@@ -18,6 +18,10 @@
 
 [필요 데이터와 Pleos API 대응표](docs/research/pleos-data-api-matrix.md)에서 문서 확인 사항과 실제 호출·반환·차량 동작의 검증 항목, 시험 데이터·에뮬레이터·실차별 개발 방법을 구분합니다.
 
+## 개발 검증
+
+[Pleos 최소 조회 앱](prototypes/pleos-nav-probe/README.md)으로 즐겨찾기·최근 목적지 SDK 호출을 검증합니다. [에뮬레이터 실행 결과](docs/research/pleos-nav-probe-results.md)에 실제 수신 자료의 필드·제약과 재현 방법을 기록했습니다. 제품의 기술 스택·실차 동작·1차 전체 완료와 구분합니다.
+
 ## 로고
 
 2026년 10월 26일, 프로젝트 대표자가 비교 시안 중 **B안**을 루플레 로고로 선택했습니다.

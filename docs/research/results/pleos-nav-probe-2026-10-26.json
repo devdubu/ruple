@@ -1,0 +1,170 @@
+{
+  "runs": [
+    {
+      "run": "20261026T063717Z-baseline",
+      "runtime": "emulator",
+      "android_user": "10",
+      "fingerprint": "Pleos/crp_avd_arm64/crp_avd_arm64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys",
+      "started_at": "2026-10-26T06:37:18.313034Z",
+      "summary": {
+        "sdk_versions": [
+          "3.0.5"
+        ],
+        "service_connected": true,
+        "requests": [
+          "bookmark",
+          "recent"
+        ],
+        "observations": [
+          {
+            "event": "list_received",
+            "kind": "bookmark",
+            "count": 2,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 132,
+            "returned_fields": [
+              "address",
+              "category",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId"
+            ],
+            "error_class": null,
+            "sdk_error_code": null
+          },
+          {
+            "event": "list_received",
+            "kind": "recent",
+            "count": 0,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 160,
+            "returned_fields": [],
+            "error_class": null,
+            "sdk_error_code": null
+          }
+        ],
+        "cycle_finished": true,
+        "interpretation": "Recorded observations only; SDK events do not contain our request ID."
+      }
+    },
+    {
+      "run": "20261026T064241Z-bookmark-added",
+      "runtime": "emulator",
+      "android_user": "10",
+      "fingerprint": "Pleos/crp_avd_arm64/crp_avd_arm64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys",
+      "started_at": "2026-10-26T06:42:42.133998Z",
+      "summary": {
+        "sdk_versions": [
+          "3.0.5"
+        ],
+        "service_connected": true,
+        "requests": [
+          "bookmark",
+          "recent"
+        ],
+        "observations": [
+          {
+            "event": "list_received",
+            "kind": "bookmark",
+            "count": 3,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 128,
+            "returned_fields": [
+              "address",
+              "category",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId"
+            ],
+            "error_class": null,
+            "sdk_error_code": null
+          },
+          {
+            "event": "list_received",
+            "kind": "recent",
+            "count": 0,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 160,
+            "returned_fields": [],
+            "error_class": null,
+            "sdk_error_code": null
+          }
+        ],
+        "cycle_finished": true,
+        "interpretation": "Recorded observations only; SDK events do not contain our request ID."
+      }
+    },
+    {
+      "run": "20261026T064717Z-destination-selected",
+      "runtime": "emulator",
+      "android_user": "10",
+      "fingerprint": "Pleos/crp_avd_arm64/crp_avd_arm64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys",
+      "started_at": "2026-10-26T06:47:17.573485Z",
+      "summary": {
+        "sdk_versions": [
+          "3.0.5"
+        ],
+        "service_connected": true,
+        "requests": [
+          "bookmark",
+          "recent"
+        ],
+        "observations": [
+          {
+            "event": "list_received",
+            "kind": "bookmark",
+            "count": 3,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 139,
+            "returned_fields": [
+              "address",
+              "category",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId"
+            ],
+            "error_class": null,
+            "sdk_error_code": null
+          },
+          {
+            "event": "list_received",
+            "kind": "recent",
+            "count": 1,
+            "in_request_window": true,
+            "elapsed_from_start_ms": 196,
+            "returned_fields": [
+              "address",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId"
+            ],
+            "error_class": null,
+            "sdk_error_code": null
+          }
+        ],
+        "cycle_finished": true,
+        "interpretation": "Recorded observations only; SDK events do not contain our request ID."
+      }
+    }
+  ]
+}
