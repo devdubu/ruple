@@ -16,6 +16,8 @@
 
 [기능 모듈과 연결 계약](docs/architecture/functional-modules.md)에서 기능별 책임·상태 소유권·모듈 간 연결을 설계 제안으로 관리합니다.
 
+[초기 루틴 제안 정책](docs/requirements/initial-routine-proposal.md)에 집·회사·내비 등록 장소 우선, 등록 정보 부재 시 이동 근거 축적 후 제안, 근거가 없을 때 수동 등록 선택을 반영했습니다. 세부 판정·화면·계약은 후속 명세에서 정합니다.
+
 [필요 데이터와 Pleos API 대응표](docs/research/pleos-data-api-matrix.md)에서 문서 확인 사항과 실제 호출·반환·차량 동작의 검증 항목, 시험 데이터·에뮬레이터·실차별 개발 방법을 구분합니다.
 
 ## 개발 검증
