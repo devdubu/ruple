@@ -1,0 +1,670 @@
+{
+  "runs": [
+    {
+      "run": "20261026T075534Z-nav-execution-final",
+      "runtime": "emulator",
+      "android_user": "10",
+      "fingerprint": "Pleos/crp_avd_arm64/crp_avd_arm64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys",
+      "started_at": "2026-10-26T07:55:34.783996Z",
+      "summary": {
+        "event_counts": {
+          "activity_paused": 4,
+          "activity_resumed": 4,
+          "api_called": 12,
+          "api_returned": 12,
+          "current_location_info": 3,
+          "destination_info": 4,
+          "navigation_app_started": 1,
+          "navigation_observation_finished": 1,
+          "navigation_status": 2,
+          "operator_cancel_selected": 1,
+          "operator_route_selected": 1,
+          "operator_screen_selected": 1,
+          "route_cancelled": 1,
+          "route_ended": 1,
+          "route_started": 1,
+          "route_state_info": 5,
+          "sdk_released": 1,
+          "service_connected": 1
+        },
+        "sdk_versions": [
+          "3.0.5"
+        ],
+        "app_versions": [
+          "0.2.1"
+        ],
+        "callbacks_while_paused": [
+          "route_started",
+          "route_ended",
+          "navigation_status",
+          "route_state_info",
+          "route_state_info",
+          "current_location_info"
+        ],
+        "service_connected": true,
+        "routing_completed_observed": false,
+        "legacy_route_ended_observed": true,
+        "route_cancelled_observed": true,
+        "destination_arrived_observed": false,
+        "screen_request_returned": true,
+        "screen_display_verdict": "Requires independent foreground Activity and screen observation",
+        "observations": [
+          {
+            "event": "navigation_app_started",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "emulator_guard": true,
+            "elapsed_from_start_ms": 0
+          },
+          {
+            "event": "activity_resumed",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "elapsed_from_start_ms": 27
+          },
+          {
+            "event": "service_connected",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "elapsed_from_start_ms": 105
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 109
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 114
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 117
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 120
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 123
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 126
+          },
+          {
+            "event": "destination_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "elapsed_from_start_ms": 140,
+            "payload_fields": [
+              "address",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId",
+              "remainDistance",
+              "remainTime",
+              "tollFare"
+            ]
+          },
+          {
+            "event": "route_state_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "elapsed_from_start_ms": 157,
+            "payload_fields": [
+              "isRouting",
+              "naviMode",
+              "remainDestinationChargingInt",
+              "remainWaypointChargingInt",
+              "routeOption",
+              "termsAgreement",
+              "trafficStatusRaw"
+            ],
+            "route_state": {
+              "naviMode": "SAFE_GUIDING",
+              "isRouting": false,
+              "routeOption": "RECOMMENDED",
+              "termsAgreement": true
+            }
+          },
+          {
+            "event": "current_location_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 0,
+            "phase_at_event": "baseline",
+            "elapsed_from_start_ms": 175,
+            "payload_fields": [
+              "address",
+              "currentRouteIndex",
+              "heading",
+              "latitude",
+              "longitude",
+              "routeId"
+            ]
+          },
+          {
+            "event": "operator_route_selected",
+            "source": "operator_test_action",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 21513
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "requestRoute",
+            "elapsed_from_start_ms": 21520
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "requestRoute",
+            "elapsed_from_start_ms": 21525
+          },
+          {
+            "event": "activity_paused",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 21976
+          },
+          {
+            "event": "route_started",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 27094,
+            "payload_fields": [
+              "distance",
+              "duration",
+              "name",
+              "remainDestinationChargingValue",
+              "tollFare"
+            ]
+          },
+          {
+            "event": "route_ended",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 27097
+          },
+          {
+            "event": "navigation_status",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "status": "ROUTE_DRIVE",
+            "elapsed_from_start_ms": 27100
+          },
+          {
+            "event": "route_state_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 27123,
+            "payload_fields": [
+              "isRouting",
+              "naviMode",
+              "remainDestinationChargingInt",
+              "remainWaypointChargingInt",
+              "routeOption",
+              "termsAgreement",
+              "trafficStatusRaw"
+            ],
+            "route_state": {
+              "naviMode": "ROUTE_GUIDING",
+              "isRouting": false,
+              "routeOption": "RECOMMENDED",
+              "termsAgreement": true
+            }
+          },
+          {
+            "event": "activity_resumed",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 59569
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 61676
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 61679
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 61684
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 61686
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 61688
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 61690
+          },
+          {
+            "event": "route_state_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 61709,
+            "payload_fields": [
+              "isRouting",
+              "naviMode",
+              "remainDestinationChargingInt",
+              "remainWaypointChargingInt",
+              "routeOption",
+              "termsAgreement",
+              "trafficStatusRaw"
+            ],
+            "route_state": {
+              "naviMode": "ROUTE_GUIDING",
+              "isRouting": false,
+              "routeOption": "RECOMMENDED",
+              "termsAgreement": true
+            }
+          },
+          {
+            "event": "current_location_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 61720,
+            "payload_fields": [
+              "address",
+              "currentRouteIndex",
+              "heading",
+              "latitude",
+              "longitude",
+              "routeId"
+            ]
+          },
+          {
+            "event": "destination_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 62721,
+            "payload_fields": [
+              "address",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId",
+              "remainDistance",
+              "remainTime",
+              "tollFare"
+            ],
+            "matches_last_test_target": {
+              "poi_id": true,
+              "name": true,
+              "coordinates_exact": false
+            }
+          },
+          {
+            "event": "operator_screen_selected",
+            "source": "operator_test_action",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 64842
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "requestNavigationScreen.Foreground",
+            "elapsed_from_start_ms": 64845
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "api": "requestNavigationScreen.Foreground",
+            "elapsed_from_start_ms": 64850
+          },
+          {
+            "event": "activity_paused",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 65202
+          },
+          {
+            "event": "activity_resumed",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "route_request",
+            "elapsed_from_start_ms": 283906
+          },
+          {
+            "event": "operator_cancel_selected",
+            "source": "operator_test_action",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 285993
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "cancelRoute",
+            "elapsed_from_start_ms": 285995
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "cancelRoute",
+            "elapsed_from_start_ms": 285998
+          },
+          {
+            "event": "route_cancelled",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286232
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 286238
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getDestinationInfo",
+            "elapsed_from_start_ms": 286254
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 286275
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getRouteStateInfo",
+            "elapsed_from_start_ms": 286281
+          },
+          {
+            "event": "api_called",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 286287
+          },
+          {
+            "event": "api_returned",
+            "source": "app_sdk_invocation",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "api": "getCurrentLocationInfo",
+            "elapsed_from_start_ms": 286318
+          },
+          {
+            "event": "navigation_status",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "status": "FREE_DRIVE",
+            "elapsed_from_start_ms": 286322
+          },
+          {
+            "event": "destination_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286337,
+            "payload_fields": [
+              "address",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId",
+              "remainDistance",
+              "remainTime",
+              "tollFare"
+            ],
+            "matches_last_test_target": {
+              "poi_id": false,
+              "name": false,
+              "coordinates_exact": false
+            }
+          },
+          {
+            "event": "route_state_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286344,
+            "payload_fields": [
+              "isRouting",
+              "naviMode",
+              "remainDestinationChargingInt",
+              "remainWaypointChargingInt",
+              "routeOption",
+              "termsAgreement",
+              "trafficStatusRaw"
+            ],
+            "route_state": {
+              "naviMode": "SAFE_GUIDING",
+              "isRouting": false,
+              "routeOption": "RECOMMENDED",
+              "termsAgreement": true
+            }
+          },
+          {
+            "event": "destination_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286358,
+            "payload_fields": [
+              "address",
+              "displayLatitude",
+              "displayLongitude",
+              "latitude",
+              "longitude",
+              "name",
+              "poiId",
+              "poiProvider",
+              "poiSubId",
+              "remainDistance",
+              "remainTime",
+              "tollFare"
+            ],
+            "matches_last_test_target": {
+              "poi_id": false,
+              "name": false,
+              "coordinates_exact": false
+            }
+          },
+          {
+            "event": "activity_paused",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286363
+          },
+          {
+            "event": "route_state_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286368,
+            "payload_fields": [
+              "isRouting",
+              "naviMode",
+              "remainDestinationChargingInt",
+              "remainWaypointChargingInt",
+              "routeOption",
+              "termsAgreement",
+              "trafficStatusRaw"
+            ],
+            "route_state": {
+              "naviMode": "SAFE_GUIDING",
+              "isRouting": false,
+              "routeOption": "RECOMMENDED",
+              "termsAgreement": true
+            }
+          },
+          {
+            "event": "current_location_info",
+            "source": "pleos_sdk_callback",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 286384,
+            "payload_fields": [
+              "address",
+              "currentRouteIndex",
+              "heading",
+              "latitude",
+              "longitude",
+              "routeId"
+            ]
+          },
+          {
+            "event": "activity_resumed",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 288485
+          },
+          {
+            "event": "navigation_observation_finished",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 290510
+          },
+          {
+            "event": "activity_paused",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 290531
+          },
+          {
+            "event": "sdk_released",
+            "source": "probe_lifecycle",
+            "attempt_at_event": 1,
+            "phase_at_event": "cancel_request",
+            "elapsed_from_start_ms": 290557
+          }
+        ],
+        "interpretation": "Events lack this probe's request ID; phase and attempt describe receipt time only.",
+        "collection": {
+          "termination_reason": "expected_events_observed",
+          "integrity": "healthy",
+          "successful_reads": 142,
+          "last_successful_read_at": "2026-10-26T08:00:27.052063+00:00",
+          "read_error_count": 1,
+          "read_errors": [
+            {
+              "at": "2026-10-26T07:55:34.851022+00:00",
+              "stage": "session_pointer",
+              "returncode": 1,
+              "error_class": null
+            }
+          ],
+          "observation_finished_observed": true,
+          "sdk_release_observed": true
+        }
+      }
+    }
+  ]
+}

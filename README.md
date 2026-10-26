@@ -24,6 +24,8 @@
 
 [Pleos 최소 조회 앱](prototypes/pleos-nav-probe/README.md)으로 즐겨찾기·최근 목적지 SDK 호출을 검증합니다. [에뮬레이터 실행 결과](docs/research/pleos-nav-probe-results.md)에 실제 수신 자료의 필드·제약과 재현 방법을 기록했습니다. 제품의 기술 스택·실차 동작·1차 전체 완료와 구분합니다.
 
+[내비 실행 검증](docs/research/pleos-navigation-execution.md)에서 별도 시험 화면의 SDK 경로 요청·완료 콜백·목적지·전경 화면·취소 결과를 확인합니다. 현재 위치·경로 상태의 수신과 콜백 이름의 호환성 제약도 기록합니다.
+
 ## 로고
 
 2026년 10월 26일, 프로젝트 대표자가 비교 시안 중 **B안**을 루플레 로고로 선택했습니다.

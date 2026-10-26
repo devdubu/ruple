@@ -3,8 +3,8 @@
 루틴 제안·관리·실행에 필요한 정보와 대응하는 Pleos API를 정리합니다. 공개 문서에서 항목을 확인한 수준과 실제 SDK 호출·반환 자료·차량 동작을 검증한 수준을 구분합니다.
 
 - 확인일: 2026년 10월 26일
-- 상태: 공개 문서 조사와 선택 조회 API의 에뮬레이터 검증
-- 실제 SDK 호출: 즐겨찾기·최근 목적지의 빈 목록·비어 있지 않은 목록 수신 확인. [실행 결과](pleos-nav-probe-results.md) 참고. 나머지 API·실차는 미검증
+- 상태: 공개 문서 조사와 선택 조회·내비 실행 API의 에뮬레이터 검증
+- 실제 SDK 호출: [즐겨찾기·최근 목적지 조회](pleos-nav-probe-results.md), [내비 요청·취소·전경 화면 및 목적지·경로 상태·현재 위치 조회](pleos-navigation-execution.md) 확인. 그 외 API·실차는 미검증
 - 개발 프로젝트별 SDK 승인 상태: 🚧 미검증. 공개 배포 파일 접근과 가상 기기의 조회 권한은 실행 결과에서 구분
 - 기획 기준: [입출력과 역할](../architecture/README.md), [기능 모듈](../architecture/functional-modules.md), [1차 프로토타입 범위](../planning/prototype-v1-scope.md)
 
@@ -15,8 +15,8 @@
 | 구분 | 의미 | 이번 조사 상태 |
 | --- | --- | --- |
 | 문서 항목 확인 | 공식 참조에 API·이벤트·설명이 존재 | 아래 대응표에 근거 연결 |
-| 접근·버전 확인 | 해당 프로젝트에서 쓸 수 있는 SDK·권한·버전 확인 | 공개 NaviHelper 3.0.5 배포·빌드와 가상 기기의 NAVI_ROUTE 권한 확인. 계정별 프로젝트 승인 상태는 미검증 |
-| 호출·반환 확인 | 실행 환경에서 호출하고 실제 응답·이벤트·필드 확인 | 즐겨찾기·최근 목적지의 에뮬레이터 수신 확인. 그 외 미검증 |
+| 접근·버전 확인 | 해당 프로젝트에서 쓸 수 있는 SDK·권한·버전 확인 | 공개 NaviHelper 3.0.5 배포·빌드와 가상 기기의 NAVI_ROUTE·NAVI_ROUTE_SEARCH·NAVI_CUSTOM_MAP 권한 확인. 계정별 프로젝트 승인 상태는 미검증 |
+| 호출·반환 확인 | 실행 환경에서 호출하고 실제 응답·이벤트·필드 확인 | 두 목록 조회와 선택한 내비 실행·맥락 조회를 에뮬레이터에서 확인. 구형 완료 콜백 수신 등 제약은 개별 결과에 기록 |
 | 차량 동작 확인 | 지원 차량에서 실제 상태 변화·실행 결과 확인 | 미검증 |
 
 문서에 있다는 사실을 데이터 수신 성공이나 실차 지원으로 표시하지 않습니다. 조회가 성공해도 빈 목록·값 없음이 반환될 수 있으며, 이벤트 미수신은 빈 목록 반환과 구분해 확인해야 합니다.
@@ -29,11 +29,11 @@
 | --- | --- | --- | --- | --- |
 | 등록 장소·즐겨찾기: 초기 장소 후보의 근거 | `getBookmarkInfo()`, `onBookmarkInfo()`, `onBookMarkChanged()` | 조회 메서드와 관련 이벤트 항목 존재 | 에뮬레이터에서 HOME·OFFICE·DEFAULT와 장소명·좌표·주소·식별자 수신 확인. 초기 HOME·OFFICE의 장소 내용은 비어 있었음. 🚧 프로필 범위·변경 이벤트·집/회사 실제 등록은 미검증. [실행 결과](pleos-nav-probe-results.md) | [S01] [S02] |
 | 최근 목적지: 반복·관심 장소 후보의 근거 | `getRecentDestinationInfo()`, `onRecentDestinationInfo()` | 조회 메서드와 관련 이벤트 항목 존재 | 에뮬레이터에서 빈 목록과 목적지 지정 후 1개 항목 수신. 현재 모델에 방문 시각·횟수 없음. 🚧 조회 범위·정렬·중복·보존 기간·프로필 범위는 미검증. [실행 결과](pleos-nav-probe-results.md) | [S01] [S02] |
-| 현재 목적지·경유지: 현재 이동 맥락 | `getDestinationInfo()`, `getWaypointInfo()`, `onDestinationInfo()`, `onWayPointInfo()` | 정보 조회 메서드·이벤트 존재. 목적지 가이드는 조회 결과를 콜백에서 처리하도록 안내 | 목적지·경유지 식별과 반환 필드, 미설정 상태, 앱에서 요청한 경로와 다른 앱에서 설정한 경로의 관찰 범위 | [S01] [S02] [S03] |
-| 경로 상태·안내 진행: 루틴 진행 맥락 | `getRouteStateInfo()`, `onRouteStateInfo()`, `onNavigationStatus()`, `onDrivingInfo()` | 조회·상태 이벤트 항목 존재. 이벤트 전달은 내비 앱 구현 시나리오에 따라 달라질 수 있음 | 실제 상태 값과 전이, 수신 시점·조건, 연결 중단·복귀 시 상태 조회, 내비 진행과 루틴 실행 상태의 대응 | [S01] [S02] |
+| 현재 목적지·경유지: 현재 이동 맥락 | `getDestinationInfo()`, `getWaypointInfo()`, `onDestinationInfo()`, `onWayPointInfo()` | 정보 조회 메서드·이벤트 존재. 목적지 가이드는 조회 결과를 콜백에서 처리하도록 안내 | 현재 목적지의 이름·식별자·좌표·잔여 정보 수신과 취소 뒤 빈 목적지 확인. 🚧 경유지·프로필 범위·요청 좌표와 반환 좌표 차이의 원인은 미검증. [내비 실행 결과](pleos-navigation-execution.md) | [S01] [S02] [S03] |
+| 경로 상태·안내 진행: 루틴 진행 맥락 | `getRouteStateInfo()`, `onRouteStateInfo()`, `onNavigationStatus()`, `onDrivingInfo()` | 조회·상태 이벤트 항목 존재. 이벤트 전달은 내비 앱 구현 시나리오에 따라 달라질 수 있음 | ROUTE_GUIDING·SAFE_GUIDING과 ROUTE_DRIVE·FREE_DRIVE 관찰. 구형 탐색 완료 콜백 onRouteEnded 수신, onRoutingCompleted 미수신. 🚧 onDrivingInfo·재연결·제품 실행 상태 대응은 미검증. [내비 실행 결과](pleos-navigation-execution.md) | [S01] [S02] |
 | 목적지 도착 신호: 방문 판단에 사용할 수 있는 관찰 후보 | `onDestinationArrived()`, `onWayPointArrived()` | 도착 관련 이벤트 항목 존재 | 발생 조건·중복·오차, 목적지 식별, 타임스탬프 제공 여부. 내비 도착을 실제 장소 방문·서비스 이용 완료로 간주하지 않음 | [S02] |
-| 현재 위치: 접근·이동 조건의 선택 맥락 | NaviHelper `getCurrentLocationInfo()`·`onCurrentLocationInfo()` 또는 FusedLocation `getLastKnownLocation()`·위치 업데이트 | NaviHelper 조회·이벤트 존재. FusedLocation 소개는 위치·시각 정보와 지원 여부 확인, 값 없음 가능성을 설명 | 두 경로의 실제 지원·정확도·신선도·권한·갱신 조건. 위치 데이터의 시각을 과거 방문 시각으로 쓰지 않음 | [S01] [S02] [S05] [S08] |
-| 남은 거리·시간과 교통 맥락: 이동 준비 보완의 선택 항목 | `getDestinationInfo()`, `getRouteStateInfo()` 등 | 릴리즈 노트에 `DestinationInfo`의 `remainDistance`·`remainTime` 필드 변경이 안내됨 | 실제 필드·단위·갱신 주기·값 없음, 어떤 경로를 기준으로 한 정보인지 확인. 외부 전체 교통정보 제공을 보장하지 않음 | [S02] [S03] [S10] |
+| 현재 위치: 접근·이동 조건의 선택 맥락 | NaviHelper `getCurrentLocationInfo()`·`onCurrentLocationInfo()` 또는 FusedLocation `getLastKnownLocation()`·위치 업데이트 | NaviHelper 조회·이벤트 존재. FusedLocation 소개는 위치·시각 정보와 지원 여부 확인, 값 없음 가능성을 설명 | NaviHelper에서 좌표·방향·주소·경로 식별자·인덱스 수신 확인. 🚧 정확도·갱신·실차·FusedLocation은 미검증. 관찰 시각을 과거 방문 시각으로 쓰지 않음. [내비 실행 결과](pleos-navigation-execution.md) | [S01] [S02] [S05] [S08] |
+| 남은 거리·시간과 교통 맥락: 이동 준비 보완의 선택 항목 | `getDestinationInfo()`, `getRouteStateInfo()` 등 | 릴리즈 노트에 `DestinationInfo`의 `remainDistance`·`remainTime` 필드 변경이 안내됨 | 잔여 거리·시간 필드와 경로 교통 상태 객체 수신. 🚧 단위·갱신·신선도는 상세 검증 필요. 외부 전체 교통정보 제공을 보장하지 않음. [내비 실행 결과](pleos-navigation-execution.md) | [S02] [S03] [S10] |
 | 차량 상태: 정차·차량 상태 등 조건의 선택 맥락 | Vehicle SDK의 해당 상태 조회·구독 API, 구체 메서드는 미선정 | 접근 안내는 Vehicle State를 별도 접근 항목으로 구분 | 필요한 상태를 먼저 선정하고 대응 API·지원 영역·권한·반환값 검증. 앱 연결 상태와 차량 전원·운행 상태를 동일시하지 않음 | [S05] |
 | 과거 실제 방문일·횟수·주기: 장주기 추정의 핵심 근거 | 이를 일괄 보장하는 단일 API는 이번 조사에서 확인하지 못함. 최근 목적지·도착 이벤트·사용자 확인을 구분해 검토 | 최근 목적지·도착 관련 API 항목의 존재까지 확인 | 현재 두 조회 모델·응답으로 과거 방문 시각·횟수를 확보하지 못함. 🚧 도착 관찰과 M1의 근거 축적·사용자 확인 정책은 후속 설계 | [S01] [S02] |
 | 마이현대 등의 정비 예약: 향후 예약 근거 후보 | 이번 조사에서 대응 Pleos API 미확인 | 검토한 NaviHelper·접근 안내만으로 제공 여부를 확인할 수 없음 | 별도 서비스 연계·제공 조건·사용자 동의가 필요한지 확인. 다른 앱의 예약 자료를 읽을 수 있다고 가정하지 않음 | [S01] [S05] 및 추가 조사 필요 |
@@ -44,8 +44,8 @@
 
 | 필요 정보·동작 | 대응 경계 | 문서·기획에서 확인한 내용 | 실제 검증·후속 결정 |
 | --- | --- | --- | --- |
-| 내비 목적지·경로 요청과 결과 | `requestRoute()`, `getDestinationInfo()`, `cancelRoute()`, 경로·오류 콜백 | 공식 가이드는 요청 성공과 경로 탐색 완료를 구분하도록 안내 | 실제 Navi Service 연결·경로 처리·오류·화면 반영을 확인. 루틴 삭제가 진행 중 내비 자동 취소를 뜻하는지는 별도 결정. [S02] [S03] |
-| 내비 화면 요청 | `requestNavigationScreen()` | 공식 API 참조와 권한 안내에 항목 존재 | 해당 환경의 화면 전환·요청 조건·권한·결과 확인. 1차 실제 연동 필수 여부는 Q03에서 결정. [S01] [S04] |
+| 내비 목적지·경로 요청과 결과 | `requestRoute()`, `getDestinationInfo()`, `cancelRoute()`, 경로·오류 콜백 | 공식 가이드는 요청 성공과 경로 탐색 완료를 구분하도록 안내 | 에뮬레이터에서 SDK 경로 요청·구형 완료 콜백·목적지 이름/식별자 반영·취소 확인. 🚧 신규 완료 콜백·좌표 차이·오류 분기는 미검증. 루틴 삭제와 자동 취소 정책은 미정. [내비 실행 결과](pleos-navigation-execution.md), [S02] [S03] |
+| 내비 화면 요청 | `requestNavigationScreen()` | 공식 API 참조와 권한 안내에 항목 존재 | Foreground 요청 전후 전경 Activity와 실제 안내 화면을 에뮬레이터에서 확인. 🚧 다른 화면 요청·실차·실패 상황은 미검증. 1차 필수 기능 수준은 Q03과 별도. [내비 실행 결과](pleos-navigation-execution.md), [S01] [S04] |
 | 다른 차량 기능 실행 | M5의 Vehicle SDK 실행 어댑터, 구체 동작·메서드 미정 | SDK 접근 안내에서 Vehicle Control을 별도 상태로 안내 | 프로젝트 접근 상태, 구체 기능·지원·권한·실제 상태 변화 검증 후 판단. 가상 콘솔의 조작 가능성을 우리 앱의 제어 권한으로 해석하지 않음. [S05] [S07] |
 | 사용자 승인·수동 등록·루틴 정의·수정·삭제 | 루플레 M2·M3의 앱·서버 상태 | 기존 합의한 자체 기능 | Pleos에서 제공받는 루틴 관리 데이터가 아니라 사용자 입력과 자체 저장·계약으로 구현. 사용자 식별·로그인 방식은 미정 |
 | 실행 건·진행 상태·결과 | M4의 실행 상태와 M5의 실행 보고 | 기존 모듈 설계 제안 | SDK 요청 접수, 전달 대기, 실제 실행 진행·결과를 구분해 기록. 실제 방문 확인과도 구분 |
@@ -138,7 +138,7 @@ flowchart LR
 | 해석 | 근거로 쓸 수 있는 내용, 추정·미확인 내용, M1·M5 계약에 미치는 영향 |
 | 판정 | 문서 확인·호출 확인·환경 동작 확인을 구분한 결과 |
 
-실제 자료를 공개 저장소의 검증 기록으로 남길 때는 개인정보·위치 이력·인증값을 제거한 자료를 사용합니다. 즐겨찾기·최근 목적지 조회는 [별도 실행 결과와 요약](pleos-nav-probe-results.md)에 기록했고, 그 외 SDK 호출은 수행하지 않았습니다.
+실제 자료를 공개 저장소의 검증 기록으로 남길 때는 개인정보·위치 이력·인증값을 제거한 자료를 사용합니다. [두 목록 조회](pleos-nav-probe-results.md)와 [선택한 내비 실행·맥락 조회](pleos-navigation-execution.md)를 기록했습니다. 이들 외의 SDK 호출은 수행하지 않았습니다.
 
 ## 다음 확인 질문
 

@@ -1,0 +1,15 @@
+{
+  "captured_at": "2026-10-26T08:07:39.444718+00:00",
+  "purpose": "Post-run installed environment confirmation; no SDK calls",
+  "fingerprint": "Pleos/crp_avd_arm64/crp_avd_arm64:14/RELEASE.release_connect_v2.1.0/release_connect_v2.1.0:user/test-keys",
+  "packages": {
+    "com.ruple.probe": "0.2.1",
+    "ai.pleos.playground.service.navi": "3.0.4",
+    "ai.umos.maps.android.navigation.app": "3.3.2-rc5-hotfix.3"
+  },
+  "probe_permissions": {
+    "NAVI_ROUTE": "true",
+    "NAVI_ROUTE_SEARCH": "true",
+    "NAVI_CUSTOM_MAP": "true"
+  }
+}

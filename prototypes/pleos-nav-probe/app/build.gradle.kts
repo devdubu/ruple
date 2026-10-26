@@ -8,8 +8,8 @@ android {
         applicationId = "com.ruple.probe"
         minSdk = 28
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 3
+        versionName = "0.2.1"
         buildConfigField("String", "NAVI_HELPER_VERSION", "\"3.0.5\"")
     }
     buildFeatures { buildConfig = true }

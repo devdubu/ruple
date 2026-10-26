@@ -1,0 +1,22 @@
+{
+  "before": {
+    "foreground": {
+      "probe": true,
+      "navigation": false
+    },
+    "activity_file": "nav-final-before-screen-activities.txt",
+    "screen_file": "nav-final-before-screen.png",
+    "screen_sha256": "eddf77f78966fb58462530e2c6c67de3b32c9d0aab2ee552634267c404b57e37"
+  },
+  "after": {
+    "foreground": {
+      "probe": false,
+      "navigation": true
+    },
+    "activity_file": "nav-final-after-screen-activities.txt",
+    "screen_file": "nav-final-after-screen.png",
+    "screen_sha256": "8127a17e6fcfae887cc505524e1df95c58cf240b1f0e859e8b2427b83c3d4b87"
+  },
+  "expected_foreground_transition_observed": true,
+  "screen_content_verdict": "Screenshots require visual review; Activity parsing alone does not verify content"
+}

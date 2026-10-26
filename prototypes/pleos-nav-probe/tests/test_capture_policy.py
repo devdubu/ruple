@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from capture_probe import can_finish_capture
+from capture_probe import CaptureHealth, can_finish_capture, parse_snapshot
 from summarize_probe import summarize
 
 
@@ -15,6 +15,27 @@ def event(kind, query=None, cycle=1, in_window=True):
 
 
 class CapturePolicyTest(unittest.TestCase):
+    def test_read_failures_after_a_good_snapshot_are_not_sdk_silence(self):
+        health = CaptureHealth()
+        health.success()
+        for _ in range(3): health.failure("events_file", 1)
+        self.assertTrue(health.must_stop())
+        report = health.report("read_failure", [event("cycle_finished")])
+        self.assertEqual(report["integrity"], "incomplete")
+        self.assertIsNotNone(report["last_successful_read_at"])
+        self.assertFalse(report["sdk_release_observed"])
+
+    def test_capture_deadline_does_not_claim_sdk_release(self):
+        health = CaptureHealth()
+        health.success()
+        report = health.report("observation_timeout", [])
+        self.assertEqual(report["termination_reason"], "observation_timeout")
+        self.assertFalse(report["sdk_release_observed"])
+
+    def test_partial_record_is_not_published_as_a_complete_snapshot(self):
+        with self.assertRaises(ValueError): parse_snapshot(b'{"event":"pending"')
+        self.assertEqual(parse_snapshot(b'{"event":"complete"}\n')[0]["event"], "complete")
+
     def test_both_list_callbacks_and_cycle_end_allow_early_finish(self):
         self.assertTrue(can_finish_capture([
             event("list_received", "bookmark"), event("list_received", "recent"),
