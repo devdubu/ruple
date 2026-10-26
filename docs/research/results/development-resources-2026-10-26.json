@@ -1,0 +1,55 @@
+{
+  "observed_at_utc": "2026-10-26T09:29:33.604640+00:00",
+  "kind": "local_shell_observation_not_remote_or_sdk_verification",
+  "architecture": "arm64",
+  "python": "3.9.6",
+  "android_sdk_directory_exists": true,
+  "pleos_avd_config_exists": true,
+  "android_studio_directory_exists": true,
+  "docker_cli_present": true,
+  "docker_daemon_tested": false,
+  "disk_free_bytes_on_repo_volume": 111820800000,
+  "remote_server": {
+    "availability": "user_reported",
+    "connection_tested": false
+  },
+  "dgx_spark": {
+    "availability": "user_reported",
+    "model_runtime_tested": false
+  },
+  "android_phone": {
+    "availability": "user_reported",
+    "app_install_tested": false
+  },
+  "iphone": {
+    "availability": "user_reported",
+    "app_install_tested": false
+  },
+  "sdk_calls_performed": false,
+  "emulator_boot_performed": false,
+  "java": {
+    "exit_code": 0,
+    "output": "openjdk version \"21.0.10\" 2026-01-20 LTS\nOpenJDK Runtime Environment Temurin-21.0.10+7 (build 21.0.10+7-LTS)\nOpenJDK 64-Bit Server VM Temurin-21.0.10+7 (build 21.0.10+7-LTS, mixed mode, sharing)"
+  },
+  "memory_bytes_query": {
+    "exit_code": 1,
+    "output": "sysctl: sysctl fmt -1 1024 1: Operation not permitted"
+  },
+  "processor_query": {
+    "exit_code": 1,
+    "output": "sysctl: sysctl fmt -1 1024 1: Operation not permitted"
+  },
+  "adb_version": {
+    "exit_code": 0,
+    "output": "Android Debug Bridge version 1.0.41\nVersion 37.0.1-15733141"
+  },
+  "device_query_failure": {
+    "exit_code": 1,
+    "permission_denied_in_current_shell": true,
+    "device_list_observed": false
+  },
+  "emulator_version_probe": {
+    "exit_code": -6,
+    "output": "Incompatible processor. This Qt build requires the following features:\n    neon"
+  }
+}

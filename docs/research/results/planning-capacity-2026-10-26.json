@@ -1,0 +1,48 @@
+{
+  "kind": "planning_assumptions_not_committed_capacity",
+  "start_inclusive": "2026-10-27",
+  "finish_inclusive": "2026-11-13",
+  "weekdays_monday_zero": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "assumed_daily_hours_by_slot": [
+    8.0,
+    4.0,
+    4.0
+  ],
+  "assumptions": [
+    "Full-time daily hours and working weekdays are planning assumptions.",
+    "Four hours for each employed member is a user-stated daily maximum.",
+    "All selected days at the maximum is an upper-bound scenario.",
+    "PM, specification, review, integration, tests and submission consume these hours.",
+    "Leave, overtime, meetings and skill differences are not measured.",
+    "Slots are not assignments of named people."
+  ],
+  "working_dates": [
+    "2026-10-27",
+    "2026-10-28",
+    "2026-10-29",
+    "2026-10-30",
+    "2026-11-02",
+    "2026-11-03",
+    "2026-11-04",
+    "2026-11-05",
+    "2026-11-06",
+    "2026-11-09",
+    "2026-11-10",
+    "2026-11-11",
+    "2026-11-12",
+    "2026-11-13"
+  ],
+  "working_day_count": 14,
+  "theoretical_person_hours_by_slot": [
+    112.0,
+    56.0,
+    56.0
+  ],
+  "theoretical_total_person_hours": 224.0
+}
