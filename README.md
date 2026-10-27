@@ -12,14 +12,14 @@
 
 2026년 10월 26일, 프로젝트 대표자 진민이 지금까지의 제품 방향·논리 아키텍처·개발 진행 기준을 확정했습니다. [전체 아키텍처와 제출 개발 계획](docs/planning/full-architecture-review-2026-10-26.md)이 제품·모듈·제출 범위의 기준입니다. 10월 27일에는 Kubernetes·MSA, 모듈별 화면·서버 수직 개발과 구체적인 [애플리케이션 아키텍처(AA)·기술 스택](docs/architecture/application-architecture.md)을 확정했습니다. 멀티모달 주 모델은 Gemma 4 12B IT입니다.
 
-**새 팀원과 다음 세션은 [프로젝트 상세 인계](docs/handoffs/2026-10-27-project-handoff.md), [AA 확정본](docs/architecture/application-architecture.md), [10월 27일 논의 기록](docs/meetings/2026-10-27-aa-and-sharing.md)을 읽으면 됩니다.** 제품 가치·네 입출력 경로·SDK 검증·일정·자원·미정 사항과 다음 작업을 연결했습니다. Tramen 계정 없이 레포 문서만으로 이어갈 수 있습니다.
+**새 기기와 다음 세션은 [기반 개발 착수 인계](docs/handoffs/2026-10-28-foundation-start.md)부터 읽으면 됩니다.** [프로젝트 상세 인계](docs/handoffs/2026-10-27-project-handoff.md), [AA 확정본](docs/architecture/application-architecture.md), [k3s 실측 기준선](docs/infrastructure/k3s-baseline-2026-10-27.md)에 제품 가치·기술 기준·인프라 관찰과 다음 작업을 연결했습니다. Tramen 계정 없이 레포 문서만으로 이어갈 수 있습니다.
 
 | 구분 | 현재 상태 |
 | --- | --- |
 | 제품 방향 | 이동 루틴과 상태형 차량 관리 통합, 개인별 제안·알림, 음성·카드 중심 동적 화면·보조 채팅 |
 | 실행 구조 | 차량 Pleos 앱이 메인, 스마트폰은 컴패니언. 양쪽 에지 클라이언트와 개인 서버 Automation Hub, DGX Spark의 서버 추론 |
 | 모듈·협업 | M1~M6 책임 구분, A·B·C 작업 묶음, 기능별 화면·서버·저장·연계를 한 담당자가 소유 |
-| AA·배포 방향 | 기존 Pi Kubernetes의 MSA, PWA·차량 Android 브리지·업무 서비스·DB·Gemma 4 GPU AI 조합 확정. 실행 전제와 배포는 검증 전 |
+| AA·배포 방향 | 기존 Pi k3s 4노드와 Argo CD의 현재 상태 확인. PWA·차량 Android 브리지·업무 서비스·DB·Gemma 4 GPU AI 조합 확정. Ruple 배포는 개발 전 |
 | 제출 계획 | 11월 15일 접수 마감. 기존 필수 통합 우선, 상태형·SLM·음성·동적 화면의 대표 흐름은 조건부 확장 목표 |
 | 실제 구현 | 즐겨찾기·최근 목적지 조회와 내비 실행 검증 앱. 제품 서버·컴패니언·루틴 엔진 통합은 개발 전 |
 | 상세 미정 | 담당 실명, 우선 모바일 시험 기기, 실제 차량 연동 수준, 기존 사례의 시험값·임계값, 임베딩·재순위·TTS 모델, 세부 계약 |
