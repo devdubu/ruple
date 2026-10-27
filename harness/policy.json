@@ -1,0 +1,59 @@
+{
+  "formatVersion": 1,
+  "harnessVersion": "0.1.0",
+  "requiredFiles": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "docs/governance/project-rules.md",
+    "docs/governance/workflow.md",
+    "docs/governance/ownership.md",
+    "contracts/README.md",
+    "contracts/catalog.json"
+  ],
+  "adapters": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "canonicalDocuments": [
+    "docs/governance/project-rules.md",
+    "docs/governance/workflow.md",
+    "docs/governance/ownership.md",
+    "contracts/README.md"
+  ],
+  "services": [
+    {
+      "name": "context-api",
+      "domain": "context"
+    },
+    {
+      "name": "automation-api",
+      "domain": "automation"
+    },
+    {
+      "name": "automation-worker",
+      "domain": "automation"
+    },
+    {
+      "name": "interaction-api",
+      "domain": "interaction"
+    },
+    {
+      "name": "ai-api",
+      "domain": "ai"
+    }
+  ],
+  "serverPackageTokens": {
+    "context": [
+      "packages/context/server",
+      "@ruple/context-server"
+    ],
+    "automation": [
+      "packages/automation/server",
+      "@ruple/automation-server"
+    ],
+    "interaction": [
+      "packages/interaction/server",
+      "@ruple/interaction-server"
+    ]
+  }
+}

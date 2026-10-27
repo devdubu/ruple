@@ -9,7 +9,7 @@
 
 [전체 아키텍처와 제출 개발 계획](../planning/full-architecture-review-2026-10-26.md)에서 상태형 관리·개인화·서버 AI·음성·동적 화면을 포함한 배치도와 작업·시험 기준을 함께 확인할 수 있습니다.
 
-2026년 10월 27일 공유한 [AA·기술 스택 추천안](application-architecture-proposal.md)은 최신 사용자 지정인 Kubernetes·MSA와 모듈별 수직 개발에 맞춰 실행·저장·배포 구성을 제안합니다. 이 문서의 논리 역할은 유지하며 구체 프레임워크와 서비스 배치는 아직 추천 단계입니다. [상세 인계](../handoffs/2026-10-27-project-handoff.md)와 [논의 기록](../meetings/2026-10-27-aa-and-sharing.md)에 변경 관계와 다음 작업을 연결했습니다.
+2026년 10월 27일 확정한 [AA·기술 스택](application-architecture.md)은 Kubernetes·MSA와 모듈별 수직 개발에 맞춘 실행·저장·배포 구성을 정합니다. 멀티모달 주 모델은 Gemma 4 12B IT입니다. 이 문서의 논리 역할은 유지하며 실제 설치·호환·성능은 후속 검증합니다. [상세 인계](../handoffs/2026-10-27-project-handoff.md)와 [논의 기록](../meetings/2026-10-27-aa-and-sharing.md)에 변경 관계와 다음 작업을 연결했습니다.
 
 ## 기능 모듈 설계
 
@@ -43,7 +43,7 @@
 
 ## 역할 구성도
 
-상자는 논리적인 책임 구분입니다. 물리적인 배포 구성과 기술 스택은 [AA 추천안](application-architecture-proposal.md)을 검토한 뒤 결정합니다.
+상자는 논리적인 책임 구분입니다. 물리적인 배포 구성과 기술 스택은 [AA 확정본](application-architecture.md)을 따릅니다.
 
 ```mermaid
 %% 2026-10-26 확정한 역할 기준. 전체 배치·작업·검증 상태는 상위 개발 계획 참조.

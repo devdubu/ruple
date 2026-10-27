@@ -10,19 +10,19 @@
 
 ## 현재 확정 기준
 
-2026년 10월 26일, 프로젝트 대표자 진민이 지금까지의 제품 방향·논리 아키텍처·개발 진행 기준을 확정했습니다. [전체 아키텍처와 제출 개발 계획](docs/planning/full-architecture-review-2026-10-26.md)이 제품·모듈·제출 범위의 기준입니다. 이후 Kubernetes·MSA와 모듈별 화면·서버 수직 개발을 지정했으며, 구체적인 [애플리케이션 아키텍처(AA)와 기술 스택](docs/architecture/application-architecture-proposal.md)은 추천안으로 공유합니다.
+2026년 10월 26일, 프로젝트 대표자 진민이 지금까지의 제품 방향·논리 아키텍처·개발 진행 기준을 확정했습니다. [전체 아키텍처와 제출 개발 계획](docs/planning/full-architecture-review-2026-10-26.md)이 제품·모듈·제출 범위의 기준입니다. 10월 27일에는 Kubernetes·MSA, 모듈별 화면·서버 수직 개발과 구체적인 [애플리케이션 아키텍처(AA)·기술 스택](docs/architecture/application-architecture.md)을 확정했습니다. 멀티모달 주 모델은 Gemma 4 12B IT입니다.
 
-**새 팀원과 다음 세션은 [프로젝트 상세 인계](docs/handoffs/2026-10-27-project-handoff.md), [AA 추천안](docs/architecture/application-architecture-proposal.md), [10월 27일 논의 기록](docs/meetings/2026-10-27-aa-and-sharing.md)을 읽으면 됩니다.** 제품 가치·네 입출력 경로·SDK 검증·일정·자원·미정 사항과 다음 작업을 연결했습니다. Tramen 계정 없이 레포 문서만으로 이어갈 수 있습니다.
+**새 팀원과 다음 세션은 [프로젝트 상세 인계](docs/handoffs/2026-10-27-project-handoff.md), [AA 확정본](docs/architecture/application-architecture.md), [10월 27일 논의 기록](docs/meetings/2026-10-27-aa-and-sharing.md)을 읽으면 됩니다.** 제품 가치·네 입출력 경로·SDK 검증·일정·자원·미정 사항과 다음 작업을 연결했습니다. Tramen 계정 없이 레포 문서만으로 이어갈 수 있습니다.
 
 | 구분 | 현재 상태 |
 | --- | --- |
 | 제품 방향 | 이동 루틴과 상태형 차량 관리 통합, 개인별 제안·알림, 음성·카드 중심 동적 화면·보조 채팅 |
 | 실행 구조 | 차량 Pleos 앱이 메인, 스마트폰은 컴패니언. 양쪽 에지 클라이언트와 개인 서버 Automation Hub, DGX Spark의 서버 추론 |
 | 모듈·협업 | M1~M6 책임 구분, A·B·C 작업 묶음, 기능별 화면·서버·저장·연계를 한 담당자가 소유 |
-| AA·배포 방향 | 기존 Pi Kubernetes에서 MSA를 검토하는 사용자 지정. PWA·차량 Android 브리지·업무 서비스·DB·GPU AI 조합은 추천 단계이며 배포 전 |
+| AA·배포 방향 | 기존 Pi Kubernetes의 MSA, PWA·차량 Android 브리지·업무 서비스·DB·Gemma 4 GPU AI 조합 확정. 실행 전제와 배포는 검증 전 |
 | 제출 계획 | 11월 15일 접수 마감. 기존 필수 통합 우선, 상태형·SLM·음성·동적 화면의 대표 흐름은 조건부 확장 목표 |
 | 실제 구현 | 즐겨찾기·최근 목적지 조회와 내비 실행 검증 앱. 제품 서버·컴패니언·루틴 엔진 통합은 개발 전 |
-| 상세 미정 | 담당 실명, 우선 모바일 OS, 실제 차량 연동 수준, 기존 사례의 시험값·임계값, 기술 스택·모델·세부 계약 |
+| 상세 미정 | 담당 실명, 우선 모바일 시험 기기, 실제 차량 연동 수준, 기존 사례의 시험값·임계값, 임베딩·재순위·TTS 모델, 세부 계약 |
 
 ## 제품 구성
 
@@ -40,7 +40,7 @@
 
 [전체 아키텍처와 제출 개발 계획](docs/planning/full-architecture-review-2026-10-26.md)에서 확정 범위, 전체 배치도·모듈·작업 묶음·작업분류체계(WBS)·날짜별 판정 기준·시험 행렬·실행 자원·미정 사항을 확인할 수 있습니다.
 
-[AA와 기술 스택 추천안](docs/architecture/application-architecture-proposal.md)에서 모노레포·화면·네이티브 브리지·업무 서비스·DB·작업 큐·임베딩·검색 증강 생성(RAG)·GPU 추론·Kubernetes 배치를 검토합니다. 기존 작은 단일 백엔드 설명은 최신 MSA 요청에 맞춰 변경할 대상이며, 프레임워크 채택·호환 검증·제품 구현 완료를 뜻하지 않습니다.
+[AA와 기술 스택 확정본](docs/architecture/application-architecture.md)은 모노레포·화면·네이티브 브리지·업무 서비스·DB·작업 큐·임베딩·검색 증강 생성(RAG)·Gemma 4 멀티모달 추론·Kubernetes 배치를 정합니다. 기존 작은 단일 백엔드 설명은 이 MSA 기준으로 대체합니다. 기술 기준 확정과 호환 검증·제품 구현 완료는 구분합니다.
 
 [1차 프로토타입 범위와 완료 기준](docs/planning/prototype-v1-scope.md)에서 구현·시연 범위, 완료 판정안과 사용자 결정 대기 항목을 관리합니다.
 
@@ -51,6 +51,24 @@
 [초기 루틴 제안 정책](docs/requirements/initial-routine-proposal.md)에 집·회사·내비 등록 장소 우선, 등록 정보 부재 시 이동 근거 축적 후 제안, 근거가 없을 때 수동 등록 선택을 반영했습니다. 세부 판정·화면·계약은 후속 명세에서 정합니다.
 
 [필요 데이터와 Pleos API 대응표](docs/research/pleos-data-api-matrix.md)에서 문서 확인 사항과 실제 호출·반환·차량 동작의 검증 항목, 시험 데이터·에뮬레이터·실차별 개발 방법을 구분합니다.
+
+## 개발 하네스
+
+서로 다른 개발자와 인공지능 도구가 같은 계약과 경계를 따르도록 프로젝트 공통 하네스 v0.1을 적용합니다.
+
+- [하네스 구성과 적용 단계](docs/governance/README.md)
+- [프로젝트 공통 규칙](docs/governance/project-rules.md)
+- [작업 흐름](docs/governance/workflow.md)
+- [담당 경계](docs/governance/ownership.md)
+- [계약 관리](contracts/README.md)
+
+```bash
+# 전체 점검
+node harness/check.mjs
+
+# 선택 사항: 저장소별 커밋 전 점검 활성화
+node harness/install.mjs
+```
 
 ## 장기 방향
 
