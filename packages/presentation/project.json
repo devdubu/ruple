@@ -1,0 +1,31 @@
+{
+  "name": "presentation",
+  "projectType": "library",
+  "sourceRoot": "packages/presentation/src",
+  "tags": [
+    "type:lib",
+    "scope:shared",
+    "env:browser"
+  ],
+  "targets": {
+    "test": { "executor": "nx:run-commands", "options": { "command": "vitest run packages/presentation" } },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/presentation"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/presentation/tsconfig.json --noEmit"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/presentation/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

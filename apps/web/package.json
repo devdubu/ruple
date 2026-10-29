@@ -1,0 +1,16 @@
+{
+  "name": "@ruple/web",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "dependencies": {
+    "@ruple/platform-client": "workspace:*",
+    "@ruple/platform": "workspace:*",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@ruple/presentation": "workspace:*",
+    "@ruple/context-ui": "workspace:*",
+    "@ruple/automation-ui": "workspace:*",
+    "@ruple/interaction-ui": "workspace:*"
+  }
+}

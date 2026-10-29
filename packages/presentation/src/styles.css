@@ -1,0 +1,89 @@
+@import "tailwindcss" source(none);
+@source "./";
+@source "../../*/ui/src";
+@source "../../../apps/web/src";
+
+:root {
+  color-scheme: light;
+  --background: #f6f8f5;
+  --foreground: #18251e;
+  --card: #ffffff;
+  --card-foreground: #18251e;
+  --primary: #205b40;
+  --primary-foreground: #ffffff;
+  --secondary: #e8eee9;
+  --secondary-foreground: #243b2d;
+  --muted: #edf1ed;
+  --muted-foreground: #56655b;
+  --border: #d7e0d8;
+  --input: #7c9182;
+  --ring: #28704d;
+  --destructive: #b32635;
+  --destructive-foreground: #ffffff;
+  --danger-surface: #fff0f1;
+  --success: #205b40;
+  --success-surface: #e6f3eb;
+  --warning: #80500b;
+  --warning-surface: #fff4da;
+  --radius: .875rem;
+  --font-size-base: 1rem;
+  --control-height-sm: 2.75rem;
+  --control-height: 3rem;
+  --control-height-lg: 3.5rem;
+  --page-space: clamp(1rem, 3vw, 2.5rem);
+  --content-width: 76rem;
+  --font-family: ui-sans-serif, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+[data-device="car"] {
+  --font-size-base: 1.25rem;
+  --control-height-sm: 4rem;
+  --control-height: 4rem;
+  --control-height-lg: 4.5rem;
+  --page-space: clamp(1.5rem, 4vw, 3rem);
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-danger-surface: var(--danger-surface);
+  --color-success: var(--success);
+  --color-success-surface: var(--success-surface);
+  --color-warning: var(--warning);
+  --color-warning-surface: var(--warning-surface);
+  --radius-sm: calc(var(--radius) - .25rem);
+  --radius-md: calc(var(--radius) - .125rem);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + .5rem);
+  --font-sans: var(--font-family);
+  --text-sm: calc(var(--font-size-base) * .875);
+  --text-base: var(--font-size-base);
+  --text-lg: calc(var(--font-size-base) * 1.125);
+  --text-xl: calc(var(--font-size-base) * 1.375);
+  --text-2xl: calc(var(--font-size-base) * 1.75);
+  --text-3xl: calc(var(--font-size-base) * 2.125);
+}
+
+@layer base {
+  * { border-color: var(--border); }
+  body { margin: 0; font-family: var(--font-family); background: var(--background); color: var(--foreground); }
+  [data-device] { font-size: var(--font-size-base); }
+  button, input, textarea, select { font: inherit; }
+  button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+  ::selection { background: var(--secondary); color: var(--foreground); }
+}

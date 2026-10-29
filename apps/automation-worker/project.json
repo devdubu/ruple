@@ -1,0 +1,45 @@
+{
+  "name": "automation-worker",
+  "projectType": "application",
+  "sourceRoot": "apps/automation-worker/src",
+  "tags": [
+    "type:app",
+    "scope:automation",
+    "env:server"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint apps/automation-worker"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/automation-worker/tsconfig.json --noEmit"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run apps/automation-worker"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/automation-worker/tsconfig.build.json"
+      },
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc-watch --project apps/automation-worker/tsconfig.build.json --onSuccess \"node apps/automation-worker/dist/main.js\" --noClear"
+      }
+    }
+  }
+}

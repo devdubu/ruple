@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": { "config": "", "css": "src/styles.css", "baseColor": "neutral", "cssVariables": true, "prefix": "" },
+  "aliases": {
+    "components": "@ruple/presentation/components",
+    "ui": "@ruple/presentation/components/ui",
+    "utils": "@ruple/presentation/lib/utils",
+    "lib": "@ruple/presentation/lib",
+    "hooks": "@ruple/presentation/hooks"
+  }
+}

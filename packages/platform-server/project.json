@@ -1,0 +1,39 @@
+{
+  "name": "platform-server",
+  "projectType": "library",
+  "sourceRoot": "packages/platform-server/src",
+  "tags": [
+    "type:lib",
+    "scope:shared",
+    "env:server"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/platform-server"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/platform-server/tsconfig.json --noEmit"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run packages/platform-server"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/platform-server/tsconfig.build.json"
+      },
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    }
+  }
+}

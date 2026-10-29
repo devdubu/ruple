@@ -1,6 +1,21 @@
 {
   "formatVersion": 1,
-  "contracts": [],
+  "contracts": [
+    {
+      "id": "platform-http",
+      "version": "1.0.0",
+      "owner": "project-architect",
+      "schema": "contracts/platform/http-v1.schema.json",
+      "example": "contracts/platform/http-v1.examples.json"
+    },
+    {
+      "id": "presentation-feature",
+      "version": "1.0.0",
+      "owner": "project-architect",
+      "schema": "contracts/presentation/feature-v1.schema.json",
+      "example": "contracts/presentation/feature-v1.examples.json"
+    }
+  ],
   "flows": [
     {
       "id": "commute-routine",

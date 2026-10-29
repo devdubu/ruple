@@ -1,0 +1,13 @@
+{
+  "name": "@ruple/automation-ui",
+  "private": true,
+  "version": "0.0.0",
+  "peerDependencies": {
+    "react": "19.3.1"
+  },
+  "dependencies": {
+    "@ruple/platform-client": "workspace:*",
+    "@ruple/platform": "workspace:*",
+    "@ruple/presentation": "workspace:*"
+  }
+}

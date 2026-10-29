@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ruple:contract:platform-http:1.0.0",
+  "title": "Ruple platform HTTP v1",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/health"
+    },
+    {
+      "$ref": "#/$defs/readiness"
+    },
+    {
+      "$ref": "#/$defs/context"
+    },
+    {
+      "$ref": "#/$defs/error"
+    }
+  ],
+  "$defs": {
+    "requestId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+    },
+    "principal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "userId",
+        "source"
+      ],
+      "properties": {
+        "userId": {
+          "$ref": "#/$defs/identityId"
+        },
+        "deviceId": {
+          "$ref": "#/$defs/identityId"
+        },
+        "vehicleId": {
+          "$ref": "#/$defs/identityId"
+        },
+        "source": {
+          "enum": [
+            "development",
+            "verified"
+          ]
+        }
+      }
+    },
+    "identityId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "health": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "service"
+      ],
+      "properties": {
+        "status": {
+          "const": "ok"
+        },
+        "service": {
+          "type": "string"
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "service"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "ready",
+            "not_ready"
+          ]
+        },
+        "service": {
+          "type": "string"
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requestId",
+        "principal"
+      ],
+      "properties": {
+        "requestId": {
+          "$ref": "#/$defs/requestId"
+        },
+        "principal": {
+          "$ref": "#/$defs/principal"
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "message",
+            "requestId"
+          ],
+          "properties": {
+            "code": {
+              "enum": [
+                "INVALID_REQUEST",
+                "METHOD_NOT_ALLOWED",
+                "REQUEST_TIMEOUT",
+                "UNSUPPORTED_MEDIA_TYPE",
+                "UNAUTHENTICATED",
+                "FORBIDDEN",
+                "NOT_FOUND",
+                "CONFLICT",
+                "PAYLOAD_TOO_LARGE",
+                "RATE_LIMITED",
+                "DEPENDENCY_UNAVAILABLE",
+                "INTERNAL_ERROR"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 160
+            },
+            "requestId": {
+              "$ref": "#/$defs/requestId"
+            }
+          }
+        }
+      }
+    }
+  }
+}

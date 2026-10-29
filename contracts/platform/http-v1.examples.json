@@ -1,0 +1,218 @@
+{
+  "valid": [
+    {
+      "name": "liveness",
+      "value": {
+        "status": "ok",
+        "service": "context-api"
+      }
+    },
+    {
+      "name": "ready",
+      "value": {
+        "status": "ready",
+        "service": "context-api"
+      }
+    },
+    {
+      "name": "not-ready",
+      "value": {
+        "status": "not_ready",
+        "service": "ai-api"
+      }
+    },
+    {
+      "name": "development-context",
+      "value": {
+        "requestId": "example-request-1",
+        "principal": {
+          "userId": "dev-user",
+          "deviceId": "dev-device",
+          "source": "development"
+        }
+      }
+    },
+    {
+      "name": "verified-context",
+      "value": {
+        "requestId": "example-request-2",
+        "principal": {
+          "userId": "example-user",
+          "source": "verified"
+        }
+      }
+    },
+    {
+      "name": "invalid_request",
+      "value": {
+        "error": {
+          "code": "INVALID_REQUEST",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "unauthenticated",
+      "value": {
+        "error": {
+          "code": "UNAUTHENTICATED",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "forbidden",
+      "value": {
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "not_found",
+      "value": {
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "conflict",
+      "value": {
+        "error": {
+          "code": "CONFLICT",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "payload_too_large",
+      "value": {
+        "error": {
+          "code": "PAYLOAD_TOO_LARGE",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "rate_limited",
+      "value": {
+        "error": {
+          "code": "RATE_LIMITED",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "dependency_unavailable",
+      "value": {
+        "error": {
+          "code": "DEPENDENCY_UNAVAILABLE",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "internal_error",
+      "value": {
+        "error": {
+          "code": "INTERNAL_ERROR",
+          "message": "Example error.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "method_not_allowed",
+      "value": {
+        "error": {
+          "code": "METHOD_NOT_ALLOWED",
+          "message": "HTTP method is not allowed.",
+          "requestId": "example-request-4"
+        }
+      }
+    },
+    {
+      "name": "request_timeout",
+      "value": {
+        "error": {
+          "code": "REQUEST_TIMEOUT",
+          "message": "Request timed out.",
+          "requestId": "example-request-4"
+        }
+      }
+    },
+    {
+      "name": "unsupported_media_type",
+      "value": {
+        "error": {
+          "code": "UNSUPPORTED_MEDIA_TYPE",
+          "message": "Request media type is not supported.",
+          "requestId": "example-request-4"
+        }
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "missing-request-id",
+      "value": {
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "Not found."
+        }
+      }
+    },
+    {
+      "name": "unregistered-code",
+      "value": {
+        "error": {
+          "code": "UNKNOWN",
+          "message": "Example.",
+          "requestId": "example-request-3"
+        }
+      }
+    },
+    {
+      "name": "untrusted-source",
+      "value": {
+        "requestId": "example-request-1",
+        "principal": {
+          "userId": "example-user",
+          "source": "headers"
+        }
+      }
+    },
+    {
+      "name": "extra-error-details",
+      "value": {
+        "error": {
+          "code": "INTERNAL_ERROR",
+          "message": "Example.",
+          "requestId": "example-request-3",
+          "stack": "internal-detail"
+        }
+      }
+    },
+    {
+      "name": "invalid-request-id",
+      "value": {
+        "requestId": "invalid request",
+        "principal": {
+          "userId": "dev-user",
+          "source": "development"
+        }
+      }
+    }
+  ]
+}

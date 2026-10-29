@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1,
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/runtime/context",
+      "contract": "platform-http",
+      "successExample": "development-context",
+      "status": 200
+    }
+  ]
+}
