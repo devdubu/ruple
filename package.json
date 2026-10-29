@@ -15,6 +15,8 @@
     "dev:all": "cross-env VITE_DEV_TRACK=all nx run-many -t serve -p web,context-api,ai-api,automation-api,automation-worker,interaction-api --parallel=6 --outputStyle=stream",
     "check": "nx run-many -t lint typecheck test build && node harness/check.mjs && node harness/contracts.mjs && node --test harness/tests/*.test.mjs && node --test tools/development/*.test.mjs",
     "check:contracts": "node harness/contracts.mjs",
+    "contract:new": "node harness/contract-drafts.mjs new",
+    "contract:check": "node harness/contract-drafts.mjs check",
     "check:boundaries": "node --test harness/tests/*.test.mjs",
     "test:smoke": "python3 scripts/smoke_workspace.py",
     "test:prototype": "python3 -m unittest discover -s prototypes/pleos-nav-probe/tests -v",

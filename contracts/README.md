@@ -2,6 +2,12 @@
 
 `contracts/`는 모듈과 서비스 사이에서 합의한 입력, 출력, 오류, 이벤트, 상태 전이의 정본입니다. 내부 구현 설명은 이곳에 두지 않습니다.
 
+## 초안 작성
+
+`pnpm contract:new <contract-id>`로 `contracts/drafts/<contract-id>/`에 스키마·예시·검토 문서 틀을 만듭니다. `pnpm contract:check <contract-id>`는 등록 전 형식을 검사합니다. 생성 직후에는 업무 필드와 정상 예시가 없어 검증에 실패하며, 카탈로그·공개 타입·모의 경로에 자동 등록되지 않습니다.
+
+초안은 미확정 검토 자료입니다. 공개 계약의 정본은 아래 절차로 검토·등록한 `catalog.json`의 항목입니다. [계약 작성과 공통 기술 기준](../docs/development/contract-authoring.md)에 역할·작성 절차·검증 범위를 정리했습니다.
+
 ## 등록 순서
 
 1. 사용자 흐름을 `flows/`에 기록합니다.
