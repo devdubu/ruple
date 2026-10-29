@@ -1,47 +1,121 @@
+@import "@fontsource-variable/asta-sans";
 @import "tailwindcss" source(none);
 @source "./";
 @source "../../*/ui/src";
 @source "../../../apps/web/src";
 
-:root {
+/* Pleos grayscale values: official Colors guide, reviewed 2026-10-29.
+   Application aliases and accessible status variants: docs/development/pleos-design-system.md. */
+:root, [data-theme="light"] {
   color-scheme: light;
-  --background: #f6f8f5;
-  --foreground: #18251e;
-  --card: #ffffff;
-  --card-foreground: #18251e;
-  --primary: #205b40;
-  --primary-foreground: #ffffff;
-  --secondary: #e8eee9;
-  --secondary-foreground: #243b2d;
-  --muted: #edf1ed;
-  --muted-foreground: #56655b;
-  --border: #d7e0d8;
-  --input: #7c9182;
-  --ring: #28704d;
-  --destructive: #b32635;
-  --destructive-foreground: #ffffff;
-  --danger-surface: #fff0f1;
-  --success: #205b40;
-  --success-surface: #e6f3eb;
+  --pleos-basic-00: #ffffff;
+  --pleos-basic-50: #f7f8fa;
+  --pleos-basic-100: #edeef2;
+  --pleos-basic-200: #e0e1e6;
+  --pleos-basic-300: #c7c9ce;
+  --pleos-basic-400: #a4a8ae;
+  --pleos-basic-500: #686a72;
+  --pleos-basic-600: #44464e;
+  --pleos-basic-700: #313236;
+  --pleos-basic-800: #1d1e21;
+  --pleos-basic-900: #131417;
+  --pleos-informative-active: #02c265;
+  --pleos-informative-positive: #0064ff;
+  --pleos-informative-negative: #ff3d16;
+  --danger-readable: #b92d10;
+  --danger-surface: #fff1ec;
+  --danger-action-foreground: #ffffff;
   --warning: #80500b;
   --warning-surface: #fff4da;
-  --radius: .875rem;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --pleos-basic-00: #131417;
+  --pleos-basic-50: #1d1e21;
+  --pleos-basic-100: #313236;
+  --pleos-basic-200: #44464e;
+  --pleos-basic-300: #686a72;
+  --pleos-basic-400: #a4a8ae;
+  --pleos-basic-500: #c7c9ce;
+  --pleos-basic-600: #e0e1e6;
+  --pleos-basic-700: #edeef2;
+  --pleos-basic-800: #f7f8fa;
+  --pleos-basic-900: #ffffff;
+  --pleos-informative-active: #00e074;
+  --pleos-informative-positive: #0082ff;
+  --pleos-informative-negative: #ff4c28;
+  --danger-readable: #ff7d61;
+  --danger-surface: #2e1b17;
+  --danger-action-foreground: #131417;
+  --warning: #ffd27d;
+  --warning-surface: #32281a;
+}
+
+:root, [data-theme] {
+  --background: var(--pleos-basic-50);
+  --foreground: var(--pleos-basic-900);
+  --card: var(--pleos-basic-00);
+  --card-foreground: var(--pleos-basic-900);
+  --popup: var(--pleos-basic-00);
+  --primary: var(--pleos-basic-600);
+  --primary-hover: var(--pleos-basic-700);
+  --primary-pressed: var(--pleos-basic-800);
+  --primary-foreground: var(--pleos-basic-00);
+  --secondary: var(--pleos-basic-100);
+  --secondary-hover: var(--pleos-basic-200);
+  --secondary-pressed: var(--pleos-basic-300);
+  --secondary-foreground: var(--pleos-basic-900);
+  --muted: var(--pleos-basic-100);
+  --muted-foreground: var(--pleos-basic-500);
+  --border: var(--pleos-basic-200);
+  --input: var(--pleos-basic-500);
+  --ring: var(--pleos-informative-positive);
+  --disabled: var(--pleos-basic-100);
+  --disabled-foreground: var(--pleos-basic-400);
+  --destructive: var(--danger-readable);
+  --destructive-foreground: var(--danger-action-foreground);
+  --success: var(--pleos-informative-positive);
+  --success-surface: var(--pleos-basic-00);
+  --overlay: rgb(19 20 23 / 64%);
+}
+
+:root {
+  --radius: 1.5rem;
   --font-size-base: 1rem;
+  --font-size-sm: .875rem;
   --control-height-sm: 2.75rem;
   --control-height: 3rem;
   --control-height-lg: 3.5rem;
+  --control-radius-sm: .75rem;
+  --control-radius: 1rem;
+  --control-radius-lg: 1.25rem;
+  --button-font-size-sm: .875rem;
+  --button-font-size: 1rem;
+  --button-font-size-lg: 1.125rem;
+  --dialog-width: 36rem;
+  --dialog-space: 1.5rem;
   --page-space: clamp(1rem, 3vw, 2.5rem);
   --content-width: 76rem;
-  --font-family: ui-sans-serif, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-family: "Asta Sans Variable", ui-sans-serif, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
 [data-device="car"] {
   --font-size-base: 1.25rem;
+  --font-size-sm: 1.125rem;
   --control-height-sm: 4rem;
-  --control-height: 4rem;
-  --control-height-lg: 4.5rem;
+  --control-height: 5rem;
+  --control-height-lg: 6.25rem;
+  --control-radius-sm: 1rem;
+  --control-radius: 1.5rem;
+  --control-radius-lg: 2rem;
+  --button-font-size-sm: 1.25rem;
+  --button-font-size: 1.5rem;
+  --button-font-size-lg: 1.75rem;
+  --dialog-width: 56rem;
+  --dialog-space: clamp(1.5rem, 3vw, 2.5rem);
   --page-space: clamp(1.5rem, 4vw, 3rem);
-  --radius: 1rem;
+  --radius: 2rem;
 }
 
 @theme inline {
@@ -51,6 +125,14 @@
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-pressed: var(--secondary-pressed);
+  --color-disabled: var(--disabled);
+  --color-disabled-foreground: var(--disabled-foreground);
+  --color-popup: var(--popup);
+  --color-overlay: var(--overlay);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -70,7 +152,7 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + .5rem);
   --font-sans: var(--font-family);
-  --text-sm: calc(var(--font-size-base) * .875);
+  --text-sm: var(--font-size-sm);
   --text-base: var(--font-size-base);
   --text-lg: calc(var(--font-size-base) * 1.125);
   --text-xl: calc(var(--font-size-base) * 1.375);

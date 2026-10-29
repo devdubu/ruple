@@ -16,7 +16,7 @@ class ScreenBoundary extends Component<{ children: ReactNode }, { failed: boolea
   }
 }
 
-export function AppShell({ features, brandMark }: { features: FeatureEntry[]; brandMark?: string }) {
+export function AppShell({ features, brandMark, toolbar }: { features: FeatureEntry[]; brandMark?: string; toolbar?: ReactNode }) {
   const path = useSyncExternalStore(subscribe,
     () => window.location.hash.slice(1) || features[0]?.path,
     () => features[0]?.path);
@@ -32,16 +32,16 @@ export function AppShell({ features, brandMark }: { features: FeatureEntry[]; br
     <div className="mx-auto max-w-[var(--content-width)] px-[var(--page-space)]">
       <header className="flex min-w-0 flex-col gap-5 border-b py-6 sm:flex-row sm:items-center sm:justify-between">
         <a className="inline-flex w-fit items-center gap-3 text-foreground" href={`#${features[0]?.path ?? '/'}`} aria-label="루플레 홈">
-          {brandMark && <img src={brandMark} alt="" className="size-9 object-contain" />}
+          {brandMark && <span className="inline-flex size-12 items-center justify-center rounded-md bg-white"><img src={brandMark} alt="" className="size-9 object-contain" /></span>}
           <span className="text-xl font-bold tracking-[.12em]">RUPLE</span>
         </a>
-        <p className="text-sm text-muted-foreground">나의 이동을 잇는 루틴</p>
+        <div className="flex flex-wrap items-center gap-4"><p className="text-sm text-muted-foreground">나의 이동을 잇는 루틴</p>{toolbar}</div>
       </header>
       <div className="grid min-w-0 gap-8 py-6 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-10 md:py-10">
         <nav aria-label="주요 메뉴" className="flex min-w-0 gap-2 overflow-x-auto p-1 md:flex-col md:self-start">
           {features.map((feature) => <a key={feature.id} href={`#${feature.path}`}
             aria-current={active?.id === feature.id ? 'page' : undefined}
-            className={cn('flex min-h-[var(--control-height)] shrink-0 items-center rounded-lg px-4 text-sm font-medium whitespace-nowrap transition-colors motion-reduce:transition-none',
+            className={cn('flex min-h-[var(--control-height)] shrink-0 items-center rounded-md px-4 text-base font-medium whitespace-nowrap transition-colors motion-reduce:transition-none',
               active?.id === feature.id ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-secondary hover:text-foreground')}>
             {feature.label}
           </a>)}

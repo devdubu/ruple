@@ -3,18 +3,18 @@ import type { ComponentProps } from 'react';
 import { cn } from '../../lib/utils';
 
 const variants = cva(
-  'inline-flex shrink-0 items-center justify-center gap-2 rounded-md px-4 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 motion-reduce:transition-none',
+  'inline-flex shrink-0 items-center justify-center gap-3 px-5 py-2 font-semibold leading-snug transition-colors disabled:pointer-events-none motion-reduce:transition-none',
   { variants: {
     variant: {
-      primary: 'bg-primary text-primary-foreground hover:opacity-90',
-      secondary: 'border border-border bg-card text-foreground hover:bg-muted',
-      ghost: 'text-muted-foreground hover:bg-secondary hover:text-foreground',
-      destructive: 'bg-destructive text-destructive-foreground hover:opacity-90',
+      primary: 'bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-pressed disabled:bg-disabled disabled:text-disabled-foreground',
+      secondary: 'bg-secondary text-foreground hover:bg-secondary-hover active:bg-secondary-pressed disabled:bg-disabled disabled:text-disabled-foreground',
+      ghost: 'text-muted-foreground hover:bg-secondary hover:text-foreground active:bg-secondary-pressed disabled:text-disabled-foreground',
+      destructive: 'bg-destructive text-destructive-foreground hover:brightness-95 active:brightness-90 disabled:bg-disabled disabled:text-disabled-foreground',
     },
     size: {
-      sm: 'min-h-[var(--control-height-sm)] px-3 text-sm',
-      default: 'min-h-[var(--control-height)]',
-      lg: 'min-h-[var(--control-height-lg)] px-6',
+      sm: 'min-h-[var(--control-height-sm)] rounded-[var(--control-radius-sm)] px-4 text-[length:var(--button-font-size-sm)]',
+      default: 'min-h-[var(--control-height)] rounded-[var(--control-radius)] text-[length:var(--button-font-size)]',
+      lg: 'min-h-[var(--control-height-lg)] rounded-[var(--control-radius-lg)] px-7 text-[length:var(--button-font-size-lg)]',
     },
   }, defaultVariants: { variant: 'primary', size: 'default' } },
 );

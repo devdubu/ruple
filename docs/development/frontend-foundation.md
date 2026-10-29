@@ -29,7 +29,9 @@ pnpm dev:b
 
 ## 디자인 재료
 
-토큰 정본은 `packages/presentation/src/styles.css`입니다. 밝은 바탕·짙은 녹색 주요 동작·검정 RUPLE 심벌을 기본으로 foreground·muted·border·ring·success·warning·destructive를 의미별 변수로 제공합니다. `bg-card`, `text-muted-foreground` 같은 토큰을 사용하고 기능마다 색상·기본 컴포넌트를 복제하지 않습니다. 최종 제품 화면 명세를 대신하지는 않습니다.
+2026-10-29 사용자 요청에 따라 [Pleos 기준 공통 디자인](pleos-design-system.md)을 적용했습니다. 공식 출처·원시 색상·의미 토큰 대응·폰트·주야간 테마·적용 한계를 해당 문서에서 관리합니다.
+
+토큰 정본은 `packages/presentation/src/styles.css`입니다. Pleos 주·야간 grayscale·중립적인 채움 버튼·Asta Sans·RUPLE 심벌을 기본으로 foreground·muted·border·ring·success·warning·destructive를 의미별 변수로 제공합니다. `bg-card`, `text-muted-foreground` 같은 토큰을 사용하고 기능마다 색상·기본 컴포넌트를 복제하지 않습니다. 최종 제품 화면 명세를 대신하지는 않습니다.
 
 Tailwind 4는 presentation, `packages/*/ui/src`, `apps/web/src`를 스캔합니다. 새 위치에 UI를 만들면 소스를 추가하고, utility는 동적 문자열 조합 대신 완성된 class 이름으로 작성합니다. CSS는 앱에서 한 번 import합니다.
 
@@ -49,10 +51,10 @@ shadcn/ui 방식으로 컴포넌트 소스를 저장소가 소유합니다. Radi
 
 ## 스마트폰·차량 프로필
 
-phone은 본문 16px, 보통 컨트롤 48px, 작은 컨트롤 최소 44px입니다. car는 본문 20px, 컨트롤 최소 64px입니다. Dialog portal에도 같은 프로필을 전달합니다.
+phone은 본문 16px, 보통 컨트롤 48px, 작은 컨트롤 최소 44px입니다. car는 본문 20px, 버튼 최소 높이 small 64px·default 80px·large 100px입니다. ThemeProvider는 자동·주간·야간을 관리하고 Dialog portal에도 테마와 디바이스 프로필을 전달합니다.
 
 ```tsx
-<DeviceProvider device="car"><Button>내용 확인</Button></DeviceProvider>
+<ThemeProvider><DeviceProvider device="car"><Button>내용 확인</Button></DeviceProvider></ThemeProvider>
 ```
 
 전체 앱은 `VITE_DEVICE_PROFILE=phone|car`로 선택합니다. 미리보기에서는 샘플 영역만 전환합니다. 좁은 화면은 가로 메뉴, 넓은 화면은 사이드 메뉴를 사용합니다.
@@ -123,4 +125,4 @@ pnpm test:ui
 
 test:ui는 production 빌드 후 개발·production 웹 서버를 띄워 Chromium에서 경로·입력·포커스·차량 크기·API 오류·개발 미리보기 제외를 검사합니다. API·DB·GPU가 필요하지 않습니다. 기존 Chromium은 PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH로 선택할 수 있습니다. CI는 Chromium 설치 후 같은 검사를 수행합니다.
 
-다음은 개발 DB·마이그레이션·시험 데이터와 상대 서비스·AI·차량의 계약 기반 대체 응답입니다. UI 상태 예시는 그 서비스 대체 응답을 구현한 것이 아닙니다. 실제 인증·차량 호스트·푸시·음성·PWA 설치 시험도 후속입니다.
+개발 DB·기술 계약 기반 peer 모의 서버는 [독립 개발 안내](isolated-development.md)에 제공합니다. 실제 인증·차량 호스트·주행 규제·주야간 신호·푸시·음성·PWA 설치 시험은 후속입니다.

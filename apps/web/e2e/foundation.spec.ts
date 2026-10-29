@@ -38,8 +38,8 @@ test('car profile enlarges controls including dialog portals and traps keyboard 
   await page.goto('/#/ui-preview');
   await page.getByRole('button', { name: '차량', exact: true }).click();
   const button = page.getByRole('button', { name: '기본 버튼', exact: true });
-  await expect(button).toHaveCSS('font-size', '20px');
-  expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(64);
+  await expect(button).toHaveCSS('font-size', '24px');
+  expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(80);
   const trigger = page.getByRole('button', { name: '대화상자 열기' });
   await trigger.click();
   const dialog = page.getByRole('dialog', { name: '입력 내용 확인' });
@@ -56,6 +56,82 @@ test('car profile enlarges controls including dialog portals and traps keyboard 
   await expect(trigger).toBeFocused();
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.screenshot({ path: 'local-artifacts/frontend/car.png' });
+});
+
+test('Pleos day/night themes follow the system, allow override, and reach dialog portals', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('/#/ui-preview');
+  const theme = page.getByLabel('화면 테마');
+  const host = page.locator('[data-theme-mode]');
+  await expect(theme).toHaveValue('system');
+  await expect(host).toHaveAttribute('data-theme', 'dark');
+  for (const mode of ['light', 'dark']) {
+    await theme.selectOption(mode);
+    await expect(host).toHaveAttribute('data-theme', mode);
+    const pairs = await page.getByTestId('ui-samples').evaluate((element) => {
+      const names = [['foreground', 'background'], ['muted-foreground', 'card'], ['primary-foreground', 'primary'],
+        ['success', 'success-surface'], ['destructive', 'danger-surface'], ['warning', 'warning-surface']];
+      const swatch = document.createElement('span'); element.append(swatch);
+      function luminance(token: string) {
+        swatch.style.color = `var(--${token})`;
+        const channels = getComputedStyle(swatch).color.match(/[\d.]+/g)!.slice(0, 3).map(Number).map((value) => {
+          const c = value / 255; return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+        });
+        return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+      }
+      const result = names.map(([foreground, background]) => {
+        const a = luminance(foreground); const b = luminance(background);
+        return { foreground, background, ratio: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) };
+      });
+      swatch.remove(); return result;
+    });
+    for (const pair of pairs) expect(pair.ratio, `${mode}: ${pair.foreground}/${pair.background}`).toBeGreaterThanOrEqual(4.5);
+  }
+  await page.emulateMedia({ colorScheme: 'light' });
+  await expect(host).toHaveAttribute('data-theme', 'dark');
+  await page.getByRole('button', { name: '차량', exact: true }).click();
+  await page.getByRole('button', { name: '대화상자 열기' }).click();
+  const dialog = page.getByRole('dialog', { name: '입력 내용 확인' });
+  await expect(dialog).toHaveAttribute('data-theme', 'dark');
+  await expect(dialog).toHaveCSS('background-color', 'rgb(19, 20, 23)');
+  await expect(dialog.getByRole('button', { name: '확인', exact: true })).toHaveCSS('font-size', '24px');
+  await page.screenshot({ path: 'local-artifacts/frontend/pleos-night-dialog.png' });
+  await page.keyboard.press('Escape');
+  await theme.selectOption('system');
+  await expect(host).toHaveAttribute('data-theme', 'light');
+});
+
+test('car components fit a narrow app window and keep loading actions unavailable', async ({ page }) => {
+  await page.setViewportSize({ width: 400, height: 900 });
+  await page.goto('/#/ui-preview');
+  await page.getByLabel('화면 테마').selectOption('dark');
+  await page.getByRole('button', { name: '차량', exact: true }).click();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(400);
+  await expect(page.getByRole('button', { name: '처리 중', exact: true })).toBeDisabled();
+  await expect(page.getByRole('button', { name: '처리 중', exact: true })).toHaveAttribute('aria-busy', 'true');
+  await page.getByRole('button', { name: '대화상자 열기' }).click();
+  const dialog = page.getByRole('dialog');
+  const bounds = (await dialog.boundingBox())!;
+  expect(bounds.x).toBeGreaterThanOrEqual(0);
+  expect(bounds.x + bounds.width).toBeLessThanOrEqual(400);
+  expect(await dialog.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+  await page.screenshot({ path: 'local-artifacts/frontend/pleos-narrow-car.png' });
+});
+
+test('production serves Korean Asta Sans locally with its license and no font CDN', async ({ page }) => {
+  const fontUrls: string[] = [];
+  page.on('request', (request) => { if (request.resourceType() === 'font') fontUrls.push(request.url()); });
+  await page.goto('http://127.0.0.1:4173/#/context');
+  const loaded = await page.evaluate(async () => {
+    const faces = await document.fonts.load('400 20px "Asta Sans Variable"', '루플레 한글 Aa');
+    return faces.length > 0 && faces.every((face) => face.status === 'loaded');
+  });
+  expect(loaded).toBe(true);
+  expect(fontUrls.length).toBeGreaterThan(0);
+  expect(fontUrls.every((url) => new URL(url).origin === 'http://127.0.0.1:4173')).toBe(true);
+  const license = await page.request.get('http://127.0.0.1:4173/licenses/asta-sans-OFL.txt');
+  expect(license.ok()).toBe(true);
+  expect(await license.text()).toContain('SIL OPEN FONT LICENSE Version 1.1');
 });
 
 test('browser API client handles the registered error contract without leaking messages', async ({ page }) => {

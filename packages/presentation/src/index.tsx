@@ -1,6 +1,7 @@
 export * from './registry';
 export * from './app-shell';
 export * from './device';
+export * from './theme';
 export * from './components/ui/button';
 export * from './components/ui/input';
 export * from './components/ui/card';

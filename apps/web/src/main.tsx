@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { AppShell, ErrorState, defineFeatures, type DeviceProfile, type FeatureEntry } from '@ruple/presentation';
+import { AppShell, ErrorState, ThemeSelect, defineFeatures, type DeviceProfile, type FeatureEntry } from '@ruple/presentation';
 import { AppProviders } from './providers';
 import { createConfiguredClients } from './lib/api';
 import './style.css';
@@ -24,7 +24,7 @@ async function start() {
   if (!root) throw new Error('Root element is missing');
   const clients = createConfiguredClients();
   createRoot(root).render(<StrictMode><AppProviders clients={clients} device={device as DeviceProfile} cacheScope={`anonymous:${track}`}>
-    <AppShell features={features} brandMark={`${import.meta.env.BASE_URL}ruple-symbol.png`} />
+    <AppShell features={features} brandMark={`${import.meta.env.BASE_URL}ruple-symbol.png`} toolbar={<ThemeSelect />} />
   </AppProviders></StrictMode>);
 }
 

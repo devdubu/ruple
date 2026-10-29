@@ -8,6 +8,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   AppShell, AsyncContent, Button, DeviceProvider, Dialog, DialogContent,
   DialogDescription, DialogTitle, DialogTrigger, InputField, defineFeatures, validateFeatureMetadata,
+  ThemeProvider,
 } from './index';
 
 afterEach(cleanup);
@@ -36,9 +37,9 @@ describe('accessible common components', () => {
 
   it('names dialogs, applies the device profile to portals and restores focus on Escape', async () => {
     const user = userEvent.setup();
-    render(<DeviceProvider device="car"><Dialog><DialogTrigger asChild><Button>열기</Button></DialogTrigger>
+    render(<ThemeProvider><DeviceProvider device="car"><Dialog><DialogTrigger asChild><Button>열기</Button></DialogTrigger>
       <DialogContent><DialogTitle>내용 확인</DialogTitle><DialogDescription>입력을 확인합니다.</DialogDescription><InputField label="메모" /></DialogContent>
-    </Dialog></DeviceProvider>);
+    </Dialog></DeviceProvider></ThemeProvider>);
     const trigger = screen.getByRole('button', { name: '열기' });
     await user.click(trigger);
     const dialog = await screen.findByRole('dialog', { name: '내용 확인' });

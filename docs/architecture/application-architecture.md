@@ -214,3 +214,7 @@ Tramen의 D-infra-1/Pi ARM k3s 전환 기록(2026년 9월 8일), Pi k3s 후속·
 - [PostGIS](https://postgis.net/documentation/), [pgvector](https://github.com/pgvector/pgvector)
 - [Capacitor 네이티브 플러그인](https://capacitorjs.com/docs/plugins), [iOS 웹 푸시](https://webkit.org/blog/13878/)
 - [FastAPI](https://fastapi.tiangolo.com/), [LlamaIndex RAG](https://developers.llamaindex.ai/python/framework/understanding/rag/), [Gemma 4 모델 카드](https://ai.google.dev/gemma/docs/core/model_card_4), [Gemma 4 모델 개요](https://ai.google.dev/gemma/docs/core), [vLLM Gemma 4 지원](https://docs.vllm.ai/en/latest/models/supported_models/), [DGX vLLM](https://build.nvidia.com/playbooks/vllm), [임베딩 후보](https://huggingface.co/Qwen/Qwen3-Embedding-0.6B)
+
+## 공통 프레젠테이션 디자인 기준
+
+2026-10-29 사용자 요청으로 공통 디자인 기준을 Pleos Connect UI Design Guide에 맞췄습니다. RUPLE 브랜드와 React·Tailwind·Radix 기반을 유지하며 색상·폰트·상태·주야간 테마를 공통 패키지에서 제공합니다. 구체적인 토큰 대응·출처·호스트 검증 한계는 [Pleos 기준 공통 디자인](../development/pleos-design-system.md)을 따릅니다. 업무 화면의 정책과 실제 주행 규제·차량 호스트 적합성은 별도 설계·검증 대상입니다.

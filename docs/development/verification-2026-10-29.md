@@ -88,3 +88,18 @@ Docker Engine 28.4.0·Compose 2.40.3, Linux x86_64에서 공식 `postgres:17-alp
 | `git diff --check` | 통과 |
 
 초안은 공개 계약의 정본으로 등록되지 않으며 형식 검사 통과와 계약 책임자의 확인을 구분합니다. 새 의존성·업무 endpoint·DB 모델·배포 변경은 없습니다. 기초 기술 원칙 중 버전 비교·중복 방지·업무 인가·서버 외부 호출 등은 도메인 구현 시 연결해야 하며, 문서화만으로 구현 완료로 보지 않습니다. 실제 담당자 환경 첫 실행·원격 CI·ARM64·서버 배포도 이 단계에서 검증하지 않았습니다.
+
+## 6단계: Pleos 기준 공통 디자인
+
+기준 커밋 `60d7403` 위의 후속 작업 트리에서 검증했습니다. 사용자가 Pleos 기준 통일을 요청해 공통 토큰·Asta Sans·주야간 테마·버튼·입력·팝업·앱 셸에 적용했습니다. 적용 범위와 원본·웹 대응 값의 구분은 [Pleos 기준 공통 디자인](pleos-design-system.md)을 따릅니다. 업무 계약은 변경하지 않았습니다.
+
+| 검증 | 결과 |
+|---|---|
+| `pnpm install --frozen-lockfile --offline`·`pnpm peers check` | 통과, peer 충돌 없음 |
+| `pnpm check` | Nx lint·타입·시험·빌드 67개 작업, 경계·계약·초안 시험 14개, 개발 환경 시험 3개 통과 |
+| `pnpm test:ui` | Chromium 8개 통과. 기존 경로·입력·포커스·API 오류·운영 미리보기 제외와 신규 테마·대비·좁은 차량 창·폰트 검사 |
+| 주·야간 색상 대비 | 본문·보조 문구·기본 버튼·성공/오류/주의 문구의 주요 조합 4.5:1 이상 |
+| 폰트 배포 | production에서 한글 Asta Sans 로딩·동일 origin 요청·OFL 제공 확인. 외부 폰트 CDN 불필요 |
+| 캡처 검토 | 320px 폰·1280px 차량·야간 팝업·400px 차량 창 직접 확인 |
+
+실행 환경은 Linux x86_64·Node 24.19.0·pnpm 11.25.0·로컬 Chromium입니다. 캡처는 `local-artifacts/frontend/`, 내려받은 공식 도판·Figma ZIP은 `local-artifacts/pleos-reference/`에 보관합니다. 원본 해시는 `packages/presentation/pleos-sources.json`에 기록했습니다. 실제 Figma Variables 자동 동기화·Pleos 호스트·물리 크기·차량 주야간 신호·주행 규제·심사는 이번 검증에 포함하지 않았습니다.

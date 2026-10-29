@@ -3,7 +3,7 @@ import { cn } from '../../lib/utils';
 
 export function Input({ className, ...props }: ComponentProps<'input'>) {
   return <input {...props} className={cn(
-    'min-h-[var(--control-height)] w-full min-w-0 rounded-md border border-input bg-card px-3 text-base text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive',
+    'min-h-[var(--control-height)] w-full min-w-0 rounded-[var(--control-radius)] border border-input bg-card px-4 py-2 text-base text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:bg-disabled disabled:text-disabled-foreground aria-invalid:border-destructive',
     className,
   )} />;
 }
