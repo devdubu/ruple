@@ -47,6 +47,8 @@ Node 서비스 템플릿 하나에 먼저 적용하고 나머지 서비스에 �
 
 ## 5. 통합·배포 기반
 
+CI/CD 실행 환경은 사용자 요청에 따라 GitHub 소스·내부 GitLab·기존 N100 Runner를 기준으로 준비합니다. 지금은 GitLab 접속 없이 서비스별 컨테이너·실행 검증부터 준비합니다. [배포 설계](gitlab-delivery.md)의 executor·연동 설정은 실제 연결 단계에서 확인하며, ARM64 이미지의 실행 검증은 게시·배포 전에 수행합니다.
+
 - 🚧 시험 후보 → 표시 → 승인 요청 → 결과 표시의 최소 연결 예제
 - 🚧 서비스별 ARM64 이미지와 검증된 커밋 SHA의 GHCR 게시
 - 🚧 Ruple 전용 개발 namespace·Kustomize·Argo CD·라우팅·NetworkPolicy
