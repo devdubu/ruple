@@ -1,0 +1,30 @@
+{
+  "name": "context-contracts",
+  "projectType": "library",
+  "sourceRoot": "packages/context/contracts/src",
+  "tags": [
+    "type:lib",
+    "scope:context",
+    "env:universal"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/context/contracts"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/context/contracts/tsconfig.json --noEmit"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/context/contracts/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

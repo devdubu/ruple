@@ -1,0 +1,50 @@
+{
+  "name": "ai-api",
+  "projectType": "application",
+  "sourceRoot": "apps/ai-api/src",
+  "tags": [
+    "type:app",
+    "scope:context",
+    "env:python"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run --locked ruff check .",
+        "cwd": "apps/ai-api"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run --locked ty check src tests",
+        "cwd": "apps/ai-api"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run --locked pytest",
+        "cwd": "apps/ai-api"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv build --out-dir ../../dist/apps/ai-api",
+        "cwd": "apps/ai-api"
+      },
+      "outputs": [
+        "{workspaceRoot}/dist/apps/ai-api"
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run --locked python -m ruple_ai",
+        "cwd": "apps/ai-api"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@ruple/platform-client",
+  "private": true,
+  "version": "0.0.0",
+  "dependencies": {
+    "@ruple/platform": "workspace:*",
+    "@tanstack/react-query": "5.105.0"
+  },
+  "peerDependencies": {
+    "react": "19.3.1"
+  }
+}

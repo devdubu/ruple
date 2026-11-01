@@ -1,0 +1,38 @@
+{
+  "reviewedAt": "2026-10-29",
+  "guide": "https://document.pleos.ai/docs/connect/guide/docs-design/Introduction/intro",
+  "implementation": "src/styles.css",
+  "sources": [
+    {
+      "use": "Light/dark grayscale primitives",
+      "url": "https://document.pleos.ai/assets/images/grayscale-f6be0c4273c5777035ffd84ea28013c9.png",
+      "sha256": "a8288710989bfafbe0220feb61ba53aca33592f9923ccee158745f969c59f99b"
+    },
+    {
+      "use": "Informative accent primitives",
+      "url": "https://document.pleos.ai/assets/images/system-color-informative-ef19e6a5596f00f102603ca3413577e3.png",
+      "sha256": "be65d9c35f34180f4bda96a440df76fc4cca7e3430efb987fbc29f3c21b5a781"
+    },
+    {
+      "use": "Button visual size reference; web profile dimensions are application choices",
+      "url": "https://document.pleos.ai/assets/images/basic_size-033b09c8bbef4d1776a3f4c7c70a49d0.svg",
+      "sha256": "915bde45f59e50c1611139573b2414f6f5b2ea8da4ff463b119ec38f3566e63f"
+    },
+    {
+      "use": "Downloaded archive inspection; not imported as a live Figma library",
+      "url": "https://document.pleos.ai/img/Pleos_Connect_design_assets_215.fig",
+      "sha256": "64ddc591e4a12f765c1d3b4b36473c22c3de312c78b241aab1bf9b680a228db6"
+    },
+    {
+      "use": "Display archive metadata inspection; file name declares 2.1.5",
+      "url": "https://document.pleos.ai/img/Pleos_Connect_display_guide_215.fig",
+      "sha256": "2283dfc1dfe871cf14fd8e15ee8831441125ef5ec471909fa17d1a03cf0bd25b"
+    }
+  ],
+  "font": {
+    "upstream": "https://github.com/42dot/Asta-Sans",
+    "distribution": "@fontsource-variable/asta-sans@5.3.0",
+    "license": "OFL-1.1",
+    "shippedLicense": "assets/branding/licenses/asta-sans-OFL.txt"
+  }
+}

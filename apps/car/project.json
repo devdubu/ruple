@@ -1,0 +1,9 @@
+{
+  "name": "car",
+  "projectType": "application",
+  "tags": [
+    "type:app",
+    "scope:interaction",
+    "env:android"
+  ]
+}

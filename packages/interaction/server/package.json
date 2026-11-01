@@ -1,0 +1,10 @@
+{
+  "name": "@ruple/interaction-server",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "dependencies": { "@ruple/platform-server": "workspace:*", "drizzle-orm": "0.45.4" }
+}

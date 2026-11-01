@@ -1,0 +1,45 @@
+{
+  "name": "interaction-api",
+  "projectType": "application",
+  "sourceRoot": "apps/interaction-api/src",
+  "tags": [
+    "type:app",
+    "scope:interaction",
+    "env:server"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint apps/interaction-api"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/interaction-api/tsconfig.json --noEmit"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run apps/interaction-api"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/interaction-api/tsconfig.build.json"
+      },
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc-watch --project apps/interaction-api/tsconfig.build.json --onSuccess \"node apps/interaction-api/dist/main.js\" --noClear"
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "services": {
+    "context-db": {
+      "image": "${RUPLE_POSTGRES_IMAGE:?Run the development prepare command}",
+      "profiles": [
+        "a"
+      ],
+      "environment": {
+        "POSTGRES_DB": "ruple_context",
+        "POSTGRES_USER": "ruple_admin",
+        "POSTGRES_PASSWORD": "${CONTEXT_ADMIN_PASSWORD:?Run the development prepare command}",
+        "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256",
+        "RUPLE_MIGRATION_PASSWORD": "${CONTEXT_MIGRATION_PASSWORD:?Run the development prepare command}",
+        "RUPLE_RUNTIME_PASSWORD": "${CONTEXT_RUNTIME_PASSWORD:?Run the development prepare command}"
+      },
+      "ports": [
+        "127.0.0.1:${CONTEXT_DB_PORT:-55431}:5432"
+      ],
+      "volumes": [
+        "context-data:/var/lib/postgresql/data",
+        "./initdb.sh:/docker-entrypoint-initdb.d/10-ruple-roles.sh:ro"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U ruple_admin -d ruple_context"
+        ],
+        "interval": "1s",
+        "timeout": "3s",
+        "retries": 40
+      },
+      "networks": [
+        "context-private"
+      ],
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    },
+    "automation-db": {
+      "image": "${RUPLE_POSTGRES_IMAGE:?Run the development prepare command}",
+      "profiles": [
+        "b"
+      ],
+      "environment": {
+        "POSTGRES_DB": "ruple_automation",
+        "POSTGRES_USER": "ruple_admin",
+        "POSTGRES_PASSWORD": "${AUTOMATION_ADMIN_PASSWORD:?Run the development prepare command}",
+        "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256",
+        "RUPLE_MIGRATION_PASSWORD": "${AUTOMATION_MIGRATION_PASSWORD:?Run the development prepare command}",
+        "RUPLE_RUNTIME_PASSWORD": "${AUTOMATION_RUNTIME_PASSWORD:?Run the development prepare command}"
+      },
+      "ports": [
+        "127.0.0.1:${AUTOMATION_DB_PORT:-55432}:5432"
+      ],
+      "volumes": [
+        "automation-data:/var/lib/postgresql/data",
+        "./initdb.sh:/docker-entrypoint-initdb.d/10-ruple-roles.sh:ro"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U ruple_admin -d ruple_automation"
+        ],
+        "interval": "1s",
+        "timeout": "3s",
+        "retries": 40
+      },
+      "networks": [
+        "automation-private"
+      ],
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    },
+    "interaction-db": {
+      "image": "${RUPLE_POSTGRES_IMAGE:?Run the development prepare command}",
+      "profiles": [
+        "b"
+      ],
+      "environment": {
+        "POSTGRES_DB": "ruple_interaction",
+        "POSTGRES_USER": "ruple_admin",
+        "POSTGRES_PASSWORD": "${INTERACTION_ADMIN_PASSWORD:?Run the development prepare command}",
+        "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256",
+        "RUPLE_MIGRATION_PASSWORD": "${INTERACTION_MIGRATION_PASSWORD:?Run the development prepare command}",
+        "RUPLE_RUNTIME_PASSWORD": "${INTERACTION_RUNTIME_PASSWORD:?Run the development prepare command}"
+      },
+      "ports": [
+        "127.0.0.1:${INTERACTION_DB_PORT:-55433}:5432"
+      ],
+      "volumes": [
+        "interaction-data:/var/lib/postgresql/data",
+        "./initdb.sh:/docker-entrypoint-initdb.d/10-ruple-roles.sh:ro"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -h 127.0.0.1 -U ruple_admin -d ruple_interaction"
+        ],
+        "interval": "1s",
+        "timeout": "3s",
+        "retries": 40
+      },
+      "networks": [
+        "interaction-private"
+      ],
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    }
+  },
+  "volumes": {
+    "context-data": {
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    },
+    "automation-data": {
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    },
+    "interaction-data": {
+      "labels": {
+        "dev.ruple.disposable": "true"
+      }
+    }
+  },
+  "networks": {
+    "context-private": {
+      "driver": "bridge"
+    },
+    "automation-private": {
+      "driver": "bridge"
+    },
+    "interaction-private": {
+      "driver": "bridge"
+    }
+  }
+}

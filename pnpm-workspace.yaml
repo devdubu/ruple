@@ -1,0 +1,12 @@
+packages:
+  - apps/*
+  - packages/*
+  - packages/context/*
+  - packages/automation/*
+  - packages/interaction/*
+
+allowBuilds:
+  '@nestjs/core': true
+  esbuild: true
+  nx: true
+  '@scarf/scarf': false

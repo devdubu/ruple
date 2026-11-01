@@ -1,0 +1,30 @@
+{
+  "name": "automation-contracts",
+  "projectType": "library",
+  "sourceRoot": "packages/automation/contracts/src",
+  "tags": [
+    "type:lib",
+    "scope:automation",
+    "env:universal"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/automation/contracts"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/automation/contracts/tsconfig.json --noEmit"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/automation/contracts/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

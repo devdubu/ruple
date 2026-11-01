@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@ruple/context-contracts": [
+        "packages/context/contracts/src/index.ts"
+      ],
+      "@ruple/context-ui": [
+        "packages/context/ui/src/index.tsx"
+      ],
+      "@ruple/automation-contracts": [
+        "packages/automation/contracts/src/index.ts"
+      ],
+      "@ruple/automation-ui": [
+        "packages/automation/ui/src/index.tsx"
+      ],
+      "@ruple/interaction-contracts": [
+        "packages/interaction/contracts/src/index.ts"
+      ],
+      "@ruple/interaction-ui": [
+        "packages/interaction/ui/src/index.tsx"
+      ],
+      "@ruple/presentation": [
+        "packages/presentation/src/index.tsx"
+      ],
+      "@ruple/presentation/*": [
+        "packages/presentation/src/*"
+      ],
+      "@ruple/platform-client": [
+        "packages/platform-client/src/index.ts"
+      ],
+      "@ruple/platform": [
+        "packages/platform/src/index.ts"
+      ]
+    }
+  }
+}

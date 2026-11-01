@@ -1,0 +1,45 @@
+{
+  "name": "automation-api",
+  "projectType": "application",
+  "sourceRoot": "apps/automation-api/src",
+  "tags": [
+    "type:app",
+    "scope:automation",
+    "env:server"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint apps/automation-api"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/automation-api/tsconfig.json --noEmit"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run apps/automation-api"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p apps/automation-api/tsconfig.build.json"
+      },
+      "outputs": [
+        "{projectRoot}/dist"
+      ]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc-watch --project apps/automation-api/tsconfig.build.json --onSuccess \"node apps/automation-api/dist/main.js\" --noClear"
+      }
+    }
+  }
+}

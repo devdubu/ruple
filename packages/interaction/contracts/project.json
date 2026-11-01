@@ -1,0 +1,30 @@
+{
+  "name": "interaction-contracts",
+  "projectType": "library",
+  "sourceRoot": "packages/interaction/contracts/src",
+  "tags": [
+    "type:lib",
+    "scope:interaction",
+    "env:universal"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/interaction/contracts"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/interaction/contracts/tsconfig.json --noEmit"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/interaction/contracts/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

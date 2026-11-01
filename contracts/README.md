@@ -2,6 +2,12 @@
 
 `contracts/`는 모듈과 서비스 사이에서 합의한 입력, 출력, 오류, 이벤트, 상태 전이의 정본입니다. 내부 구현 설명은 이곳에 두지 않습니다.
 
+## 초안 작성
+
+`pnpm contract:new <contract-id>`로 `contracts/drafts/<contract-id>/`에 스키마·예시·검토 문서 틀을 만듭니다. `pnpm contract:check <contract-id>`는 등록 전 형식을 검사합니다. 생성 직후에는 업무 필드와 정상 예시가 없어 검증에 실패하며, 카탈로그·공개 타입·모의 경로에 자동 등록되지 않습니다.
+
+초안은 미확정 검토 자료입니다. 공개 계약의 정본은 아래 절차로 검토·등록한 `catalog.json`의 항목입니다. [계약 작성과 공통 기술 기준](../docs/development/contract-authoring.md)에 역할·작성 절차·검증 범위를 정리했습니다.
+
 ## 등록 순서
 
 1. 사용자 흐름을 `flows/`에 기록합니다.
@@ -20,4 +26,12 @@
 
 ## 현재 상태
 
-대표 출퇴근 흐름은 확정됐지만 각 경계의 필드 스키마는 아직 정하지 않았습니다. 따라서 `catalog.json`에는 흐름만 등록했고 `contracts`는 비어 있습니다. 필드가 합의되기 전에는 구현체가 임의의 공개 형식을 확정하지 않습니다.
+대표 출퇴근 흐름은 확정됐지만 각 업무 경계의 필드 스키마는 아직 정하지 않았습니다. 필드가 합의되기 전에는 구현체가 임의의 공개 형식을 확정하지 않습니다.
+
+공통 기술 계약 `platform-http@1.0.0`은 `platform/`에 등록했습니다. 요청 식별자·서버가 확인한 신원·공통 오류·프로세스 상태 응답을 정의하며 루틴·추천·실행 업무 필드를 확정하지 않습니다. 적용 규약은 [백엔드 공통 규약](../docs/development/backend-conventions.md)을 따릅니다.
+
+프론트 화면 등록 메타데이터는 `presentation-feature@1.0.0`으로 등록했습니다. id·path·label·선택적 description을 정의하고 React 컴포넌트는 코드에서 연결합니다. 실제 차량 동작이나 Gen UI 실행 계약을 정의하지 않습니다. 적용 방법은 [프론트 공통 기반](../docs/development/frontend-foundation.md)을 따릅니다.
+
+등록 예시는 `valid`와 `invalid` 배열로 관리하고 각 항목은 고유한 `name`과 `value`를 가집니다. `valid`에는 정상 응답과 규격에 맞는 오류 응답을, `invalid`에는 스키마가 거부해야 할 자료를 둡니다. `pnpm check:contracts`가 JSON Schema 2020-12로 두 배열의 실제 수락·거부를 검사하며 `pnpm check`와 CI에 포함됩니다. 기존 `node harness/check.mjs`의 등록·파일·버전 검사는 의존성 설치 없이 별도로 유지합니다.
+
+개발 모의 경로는 `development/mock-routes.json`에서 등록 계약의 valid 예시를 참조합니다. 이 파일은 개발용 경로 등록표이며 새로운 업무 계약을 정의하지 않습니다. 미등록 업무 경로·빈 결과·AI 추론·차량 동작은 임의의 형식을 만들지 않고 계약 합의 후 추가합니다. 실행은 [독립 개발 안내](../docs/development/isolated-development.md)를 따릅니다.

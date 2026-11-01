@@ -1,0 +1,31 @@
+{
+  "name": "interaction-ui",
+  "projectType": "library",
+  "sourceRoot": "packages/interaction/ui/src",
+  "tags": [
+    "type:lib",
+    "scope:interaction",
+    "scope:interaction-internal",
+    "env:browser"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint packages/interaction/ui"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/interaction/ui/tsconfig.json --noEmit"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/interaction/ui/tsconfig.json --noEmit"
+      }
+    }
+  }
+}

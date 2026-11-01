@@ -1,0 +1,72 @@
+{
+  "valid": [
+    {
+      "name": "context",
+      "value": {
+        "id": "context",
+        "path": "/context",
+        "label": "근거와 제안"
+      }
+    },
+    {
+      "name": "automation",
+      "value": {
+        "id": "automation",
+        "path": "/routines",
+        "label": "루틴 관리",
+        "description": "승인한 루틴을 관리합니다."
+      }
+    },
+    {
+      "name": "interaction",
+      "value": {
+        "id": "interaction",
+        "path": "/activity",
+        "label": "실행과 알림"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "relative-path",
+      "value": {
+        "id": "context",
+        "path": "context",
+        "label": "근거와 제안"
+      }
+    },
+    {
+      "name": "external-path",
+      "value": {
+        "id": "context",
+        "path": "https://example.invalid",
+        "label": "근거와 제안"
+      }
+    },
+    {
+      "name": "empty-label",
+      "value": {
+        "id": "context",
+        "path": "/context",
+        "label": ""
+      }
+    },
+    {
+      "name": "unknown-action",
+      "value": {
+        "id": "context",
+        "path": "/context",
+        "label": "근거와 제안",
+        "action": "start-vehicle"
+      }
+    },
+    {
+      "name": "invalid-id",
+      "value": {
+        "id": "Bad ID",
+        "path": "/context",
+        "label": "근거와 제안"
+      }
+    }
+  ]
+}
