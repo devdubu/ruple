@@ -6,6 +6,7 @@ test('feature routes support deep links, back navigation and keyboard skip links
   await page.getByRole('link', { name: '루틴 관리', exact: true }).click();
   await expect(page.getByRole('heading', { name: '루틴 관리', exact: true })).toBeVisible();
   await page.getByRole('link', { name: '실행과 알림', exact: true }).click();
+  await expect(page.getByRole('heading', { name: '실행과 알림', exact: true })).toBeVisible();
   await page.goBack();
   await expect(page).toHaveURL(/#\/routines$/);
   await expect(page.getByRole('main')).toBeFocused();
